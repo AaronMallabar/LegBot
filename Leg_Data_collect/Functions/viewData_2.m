@@ -4,10 +4,10 @@ close all;
 
 set(0, 'DefaultFigureWindowStyle','docked');
 %readData(); %read and save as .mat then load it in.
-load('LegData_13.mat');
+load('LegData_23.mat');
 
 %global variabls:
-numSamples = 100;
+numSamples = 200;
 numClasses = 5;
 %% Plotting Raw Data
 plotData();
@@ -740,11 +740,11 @@ data3 = [DorsiflexionC1_Range',DorsiflexionC4_Range'];
 data4 = [PlantarflexionC1_Range',PlantarflexionC4_Range'];
 data5 = [Rest1_Range', Rest4_Range'];
 
-data1 = data1(21:40, :);
-data2 = data2(21:40, :);
-data3 = data3(21:40, :);
-data4 = data4(21:40, :);
-data5 = data5(21:40, :);
+% data1 = data1(21:40, :);
+% data2 = data2(21:40, :);
+% data3 = data3(21:40, :);
+% data4 = data4(21:40, :);
+% data5 = data5(21:40, :);
 
 % data1 = data1(1:20, :);
 % data2 = data2(1:20, :);
