@@ -4,7 +4,7 @@ close all;
 
 set(0, 'DefaultFigureWindowStyle','docked');
 %readData(); %read and save as .mat then load it in.
-load('LegData.mat');
+load('LegData_13.mat');
 
 %global variabls:
 numSamples = 100;

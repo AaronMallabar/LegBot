@@ -3,7 +3,6 @@ function[]  = readData( )
 %   Script that reads all data and puts it into correct arrays
 %% Read Data to Arrays
 %  KICK OUT DATA
-global kickOutC1;
 kickOutC1(:,1) = csvread('A_Kick_Out_Data_1.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,2) = csvread('A_Kick_Out_Data_2.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,3) = csvread('A_Kick_Out_Data_3.csv' ,0,0,[0 0 9999 0]);
@@ -45,7 +44,6 @@ kickOutC1(:,38) = csvread('A_Kick_Out_Data_38.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,39) = csvread('A_Kick_Out_Data_39.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,40) = csvread('A_Kick_Out_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-global kickOutC2;
 kickOutC2(:,1) = csvread('A_Kick_Out_Data_1.csv' ,0,1,[0 1 9999 1]);
 kickOutC2(:,2) = csvread('A_Kick_Out_Data_2.csv' ,0,1,[0 1 9999 1]);
 kickOutC2(:,3) = csvread('A_Kick_Out_Data_3.csv' ,0,1,[0 1 9999 1]);
@@ -86,7 +84,7 @@ kickOutC2(:,37) = csvread('A_Kick_Out_Data_37.csv' ,0,1,[0 1 9999 1]);
 kickOutC2(:,38) = csvread('A_Kick_Out_Data_38.csv' ,0,1,[0 1 9999 1]);
 kickOutC2(:,39) = csvread('A_Kick_Out_Data_39.csv' ,0,1,[0 1 9999 1]);
 kickOutC2(:,40) = csvread('A_Kick_Out_Data_40.csv' ,0,1,[0 1 9999 1]);
-global kickOutC3;
+
 kickOutC3(:,1) = csvread('A_Kick_Out_Data_1.csv' ,0,2,[0 2 9999 2]);
 kickOutC3(:,2) = csvread('A_Kick_Out_Data_2.csv' ,0,2,[0 2 9999 2]);
 kickOutC3(:,3) = csvread('A_Kick_Out_Data_3.csv' ,0,2,[0 2 9999 2]);
@@ -127,7 +125,7 @@ kickOutC3(:,37) = csvread('A_Kick_Out_Data_37.csv' ,0,2,[0 2 9999 2]);
 kickOutC3(:,38) = csvread('A_Kick_Out_Data_38.csv' ,0,2,[0 2 9999 2]);
 kickOutC3(:,39) = csvread('A_Kick_Out_Data_39.csv' ,0,2,[0 2 9999 2]);
 kickOutC3(:,40) = csvread('A_Kick_Out_Data_40.csv' ,0,2,[0 2 9999 2]);
-global kickOutC4;
+
 kickOutC4(:,1) = csvread('A_Kick_Out_Data_1.csv' ,0,3,[0 3 9999 3]);
 kickOutC4(:,2) = csvread('A_Kick_Out_Data_2.csv' ,0,3,[0 3 9999 3]);
 kickOutC4(:,3) = csvread('A_Kick_Out_Data_3.csv' ,0,3,[0 3 9999 3]);
