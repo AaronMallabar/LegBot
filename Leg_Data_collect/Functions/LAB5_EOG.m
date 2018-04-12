@@ -390,7 +390,7 @@ if( strcmp(buttonString,'Connect') )
 %        set(handles.Exc,'string','Ummm....');  
 %      end 
            set(handles.Exc,'string','Ready to Save');
-           csvwrite('A_Ankle_Plantarflexion_Data_41.csv',NfilteredData(:,:)');
+           csvwrite('A_Relax_41.csv',NfilteredData(:,:)');
     
         % Wait for 1 ms
         pause(.080);
