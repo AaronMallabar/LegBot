@@ -3,12 +3,11 @@ clc
 close all;
 
 set(0, 'DefaultFigureWindowStyle','docked');
-global kickOutC1;
-readData(); %read and save as .mat then load it in.
-%load('LegData.mat');
+%readData(); %read and save as .mat then load it in.
+load('LegData.mat');
 
 %global variabls:
-numSamples = 200;
+numSamples = 100;
 numClasses = 5;
 %% Plotting Raw Data
 plotData();
@@ -741,6 +740,18 @@ data3 = [DorsiflexionC1_Range',DorsiflexionC4_Range'];
 data4 = [PlantarflexionC1_Range',PlantarflexionC4_Range'];
 data5 = [Rest1_Range', Rest4_Range'];
 
+data1 = data1(21:40, :);
+data2 = data2(21:40, :);
+data3 = data3(21:40, :);
+data4 = data4(21:40, :);
+data5 = data5(21:40, :);
+
+% data1 = data1(1:20, :);
+% data2 = data2(1:20, :);
+% data3 = data3(1:20, :);
+% data4 = data4(1:20, :);
+% data5 = data5(1:20, :);
+
 % data1 = [kickOutC3_sum',kickOutC4_sum'];
 % data2 = [kickInC3_sum',kickInC4_sum'];
 % data3 = [DorsiflexionC3_sum',DorsiflexionC4_sum'];
@@ -767,7 +778,7 @@ labels = labels';
 
 figure(21);
 %labels2 = [ones(40,1); 2*ones(40,1); 3*ones(40,1); 4*ones(40,1); 5*ones(40,1)];
-gscatter(dataAll(:,1),dataAll(:,2),labels, 'brgym', 'ooooo',15, 'filled'); %Creats empty scatterplot 
+gscatter(dataAll(:,1),dataAll(:,2),labels); 
 h = gca; %get current axis
 lims = [h.XLim h.YLim]; % Extract the x and y axis limits
 title('Leg Movement');
@@ -839,14 +850,13 @@ predictedlabels = predictedlabels';
 %[0 0 1; 0 1 0; 1 0 0; 1 0 1; .5 .1 1 ]
 
 figure(22);
-h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,...
-    'bgrcy');
+h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
 hold on
-h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels);
+h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
 title('{\bf Leg movement Classification regions}');
 xlabel('Channel 1');
 ylabel('Channel 4');
-legend(h,{'KickIn Region','kickOut Region','Dorsiflexion Region', 'Plantarflexion Region', 'Rest region'...
+legend(h,{'Plantarflexion Region','Rest region','Dorsiflexion Region','KickOut Region','kickIn Region',  ...
     'Observed KickIn','Observed kickOut','Observed Dorsiflexion', 'Observed Plantarflexion', 'Observed Rest '},...
     'Location','Northwest');
 axis tight
