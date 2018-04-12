@@ -3,11 +3,13 @@ clc
 close all;
 
 set(0, 'DefaultFigureWindowStyle','docked');
+
 readData(); %read and save as .mat then load it in.
 %load('LegData.mat');
 
+
 %global variabls:
-numSamples = 100;
+numSamples = 200;
 numClasses = 5;
 
 %% Plotting Raw Data
