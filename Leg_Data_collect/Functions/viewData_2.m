@@ -734,11 +734,11 @@ Rest3_sum = sum(abs(Rest3))/10;
 Rest4_sum = sum(abs(Rest4))/10;
 
 
-data1 = [kickOutC1_Range',kickOutC4_Range'];
-data2 = [kickInC1_Range',kickInC4_Range'];
-data3 = [DorsiflexionC1_Range',DorsiflexionC4_Range'];
-data4 = [PlantarflexionC1_Range',PlantarflexionC4_Range'];
-data5 = [Rest1_Range', Rest4_Range'];
+data1 = [kickOutC1_Range',kickOutC4_Range',kickOutC1_sum'];
+data2 = [kickInC1_Range',kickInC4_Range',kickInC1_sum'];
+data3 = [DorsiflexionC1_Range',DorsiflexionC4_Range',DorsiflexionC1_sum'];
+data4 = [PlantarflexionC1_Range',PlantarflexionC4_Range',PlantarflexionC1_sum'];
+data5 = [Rest1_Range',Rest4_Range',Rest1_sum'];
 
 % data1 = data1(21:40, :);
 % data2 = data2(21:40, :);
@@ -776,15 +776,16 @@ end
 
 labels = labels';
 
-figure(21);
-%labels2 = [ones(40,1); 2*ones(40,1); 3*ones(40,1); 4*ones(40,1); 5*ones(40,1)];
-gscatter(dataAll(:,1),dataAll(:,2),labels); 
-h = gca; %get current axis
-lims = [h.XLim h.YLim]; % Extract the x and y axis limits
-title('Leg Movement');
-xlabel('Channel 1');
-ylabel('Channel 4');
-legend('Location','Northwest');
+% figure(21);
+% %labels2 = [ones(40,1); 2*ones(40,1); 3*ones(40,1); 4*ones(40,1); 5*ones(40,1)];
+% gscatter(dataAll(:,1),dataAll(:,2),dataAll(:,3),labels); 
+% h = gca; %get current axis
+% lims = [h.XLim h.YLim h.ZLim]; % Extract the x and y axis limits
+% title('Leg Movement');
+% xlabel('Channel 1 Range');
+% ylabel('Channel 4 Range');
+% zlabel('Channel 1 Sum');
+% legend('Location','Northwest');
 
 SVMModels = cell(5,1); %Creates empty models
 classes = unique(labels); %Array of labels representing the classes
@@ -799,10 +800,11 @@ for j = 1:numClasses
 end
 %scatter plot resolution (Setup for scatter plot)%
 %d = 0.002; 
-d = .02; %.02 is the largest this can be because it must be smaller than the smallest Range. 
-[x1Grid,x2Grid] = meshgrid(min(dataAll(:,1)):d:max(dataAll(:,1)),...
-    min(dataAll(:,2)):d:max(dataAll(:,2)));
-xGrid = [x1Grid(:),x2Grid(:)];
+d = .08; %.02 is the largest this can be because it must be smaller than the smallest Range. 
+[x1Grid,x2Grid,x3Grid] = meshgrid(min(dataAll(:,1)):d:max(dataAll(:,1)),...
+                           min(dataAll(:,2)):d:max(dataAll(:,2)),...
+                           min(dataAll(:,3)):d:max(dataAll(:,3)));
+xGrid = [x1Grid(:),x2Grid(:),x3Grid(:)];
 N = size(xGrid,1);
 Scores = zeros(N,numClasses);
 
@@ -814,8 +816,8 @@ end
 %This puts numbers to each point on the grid that represents the class
 %Used for calculating Error
  [~,maxScore] = max(Scores,[],2); %Scores is how accurately it is inside the class
- [rowSize, columnSize] = size(x1Grid); 
- maxscore2 = reshape(maxScore,[rowSize, columnSize]);
+ [rowSize, columnSize, heightSize] = size(x1Grid); 
+ maxscore2 = reshape(maxScore,[rowSize, columnSize, heightSize]);
  
 
 %For loop iterates each sample
@@ -823,6 +825,7 @@ end
 for i = 1:numSamples
   Xindex = floor(dataAll(i,2)/d);
   Yindex = floor(dataAll(i,1)/d);
+  Zindex = floor(dataAll(i,3)/d);
   
   if Xindex >= rowSize
       Xindex = rowSize;
@@ -830,7 +833,10 @@ for i = 1:numSamples
   if Yindex >= columnSize
       Yindex = columnSize;
   end
-  classnumber = maxscore2(Xindex, Yindex);
+  if Zindex >= heightSize
+      Zindex = heightSize;
+  end
+  classnumber = maxscore2(Xindex, Yindex, Zindex);
   switch classnumber
       case 1
           predictedlabels(i) = {'Plantarflexion'};
@@ -849,20 +855,20 @@ predictedlabels = predictedlabels';
 
 %[0 0 1; 0 1 0; 1 0 0; 1 0 1; .5 .1 1 ]
 
-figure(22);
-h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
-hold on
-h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
-title('{\bf Leg movement Classification regions}');
-xlabel('Channel 1');
-ylabel('Channel 4');
-legend(h,{'Plantarflexion Region','Rest region','Dorsiflexion Region','KickOut Region','kickIn Region',  ...
-    'Observed KickIn','Observed kickOut','Observed Dorsiflexion', 'Observed Plantarflexion', 'Observed Rest '},...
-    'Location','Northwest');
-axis tight
-hold off
+% figure(22);
+% h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
+% hold on
+% h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
+% title('{\bf Leg movement Classification regions}');
+% xlabel('Channel 1');
+% ylabel('Channel 4');
+% legend(h,{'Plantarflexion Region','Rest region','Dorsiflexion Region','KickOut Region','kickIn Region',  ...
+%     'Observed KickIn','Observed kickOut','Observed Dorsiflexion', 'Observed Plantarflexion', 'Observed Rest '},...
+%     'Location','Northwest');
+% axis tight
+% hold off
 
-dataAllinfo = table(dataAll(:,1), dataAll(:,2), labels, predictedlabels);
+dataAllinfo = table(dataAll(:,1), dataAll(:,2), dataAll(:,3), labels, predictedlabels);
 knownGroups = labels;
 PredictedGroups =  predictedlabels;
 
@@ -893,7 +899,10 @@ for i=1:numSamples
   if Yindex >= columnSize
       Yindex = columnSize;
   end
-   classnumber = maxscore2(Xindex, Yindex);
+  if Zindex >= heightSize
+      Zindex = heightSize;
+  end
+   classnumber = maxscore2(Xindex, Yindex, Zindex);
   switch classnumber
       case 5
           predicted(1,i) = 1;
