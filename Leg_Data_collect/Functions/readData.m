@@ -1,8 +1,7 @@
-function[]  = readData( )
-%UNTITLED Summary of this function goes here
-%   Script that reads all data and puts it into correct arrays
+function[kickOut kickIn Dorsiflexion Plantarflexion Rest]  = readData( )
 %% Read Data to Arrays
-%  KICK OUT DATA
+
+%%  KICK OUT DATA
 kickOutC1(:,1) = csvread('A_Kick_Out_Data_01.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,2) = csvread('A_Kick_Out_Data_02.csv' ,0,0,[0 0 9999 0]);
 kickOutC1(:,3) = csvread('A_Kick_Out_Data_03.csv' ,0,0,[0 0 9999 0]);
@@ -168,18 +167,17 @@ kickOutC4(:,39) = csvread('A_Kick_Out_Data_39.csv' ,0,3,[0 3 9999 3]);
 kickOutC4(:,40) = csvread('A_Kick_Out_Data_40.csv' ,0,3,[0 3 9999 3]);
 
 
-%  KICK IN DATA
+%%  KICK IN DATA
 
-global kickInC1;
-kickInC1(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,4) = csvread('A_Kick_In_Data_4.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,5) = csvread('A_Kick_In_Data_5.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,6) = csvread('A_Kick_In_Data_6.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,7) = csvread('A_Kick_In_Data_7.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,8) = csvread('A_Kick_In_Data_8.csv' ,0,0,[0 0 9999 0]);
-kickInC1(:,9) = csvread('A_Kick_In_Data_9.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,1) = csvread('A_Kick_In_Data_01.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,2) = csvread('A_Kick_In_Data_02.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,3) = csvread('A_Kick_In_Data_03.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,4) = csvread('A_Kick_In_Data_04.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,5) = csvread('A_Kick_In_Data_05.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,6) = csvread('A_Kick_In_Data_06.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,7) = csvread('A_Kick_In_Data_07.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,8) = csvread('A_Kick_In_Data_08.csv' ,0,0,[0 0 9999 0]);
+kickInC1(:,9) = csvread('A_Kick_In_Data_09.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,10) = csvread('A_Kick_In_Data_10.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,11) = csvread('A_Kick_In_Data_11.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,12) = csvread('A_Kick_In_Data_12.csv' ,0,0,[0 0 9999 0]);
@@ -212,17 +210,15 @@ kickInC1(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-
-global kickInC2;
-kickInC2(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,4) = csvread('A_Kick_In_Data_4.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,5) = csvread('A_Kick_In_Data_5.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,6) = csvread('A_Kick_In_Data_6.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,7) = csvread('A_Kick_In_Data_7.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,8) = csvread('A_Kick_In_Data_8.csv' ,0,1,[0 1 9999 1]);
-kickInC2(:,9) = csvread('A_Kick_In_Data_9.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,1) = csvread('A_Kick_In_Data_01.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,2) = csvread('A_Kick_In_Data_02.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,3) = csvread('A_Kick_In_Data_03.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,4) = csvread('A_Kick_In_Data_04.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,5) = csvread('A_Kick_In_Data_05.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,6) = csvread('A_Kick_In_Data_06.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,7) = csvread('A_Kick_In_Data_07.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,8) = csvread('A_Kick_In_Data_08.csv' ,0,1,[0 1 9999 1]);
+kickInC2(:,9) = csvread('A_Kick_In_Data_09.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,10) = csvread('A_Kick_In_Data_10.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,11) = csvread('A_Kick_In_Data_11.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,12) = csvread('A_Kick_In_Data_12.csv' ,0,1,[0 1 9999 1]);
@@ -255,16 +251,15 @@ kickInC2(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,1,[0 1 9999 1]);
 
-global kickInC3;
-kickInC3(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,4) = csvread('A_Kick_In_Data_4.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,5) = csvread('A_Kick_In_Data_5.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,6) = csvread('A_Kick_In_Data_6.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,7) = csvread('A_Kick_In_Data_7.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,8) = csvread('A_Kick_In_Data_8.csv' ,0,2,[0 2 9999 2]);
-kickInC3(:,9) = csvread('A_Kick_In_Data_9.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,1) = csvread('A_Kick_In_Data_01.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,2) = csvread('A_Kick_In_Data_02.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,3) = csvread('A_Kick_In_Data_03.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,4) = csvread('A_Kick_In_Data_04.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,5) = csvread('A_Kick_In_Data_05.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,6) = csvread('A_Kick_In_Data_06.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,7) = csvread('A_Kick_In_Data_07.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,8) = csvread('A_Kick_In_Data_08.csv' ,0,2,[0 2 9999 2]);
+kickInC3(:,9) = csvread('A_Kick_In_Data_09.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,10) = csvread('A_Kick_In_Data_10.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,11) = csvread('A_Kick_In_Data_11.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,12) = csvread('A_Kick_In_Data_12.csv' ,0,2,[0 2 9999 2]);
@@ -297,16 +292,15 @@ kickInC3(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,2,[0 2 9999 2]);
 
-global kickInC4;
-kickInC4(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,4) = csvread('A_Kick_In_Data_4.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,5) = csvread('A_Kick_In_Data_5.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,6) = csvread('A_Kick_In_Data_6.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,7) = csvread('A_Kick_In_Data_7.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,8) = csvread('A_Kick_In_Data_8.csv' ,0,3,[0 3 9999 3]);
-kickInC4(:,9) = csvread('A_Kick_In_Data_9.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,1) = csvread('A_Kick_In_Data_01.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,2) = csvread('A_Kick_In_Data_02.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,3) = csvread('A_Kick_In_Data_03.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,4) = csvread('A_Kick_In_Data_04.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,5) = csvread('A_Kick_In_Data_05.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,6) = csvread('A_Kick_In_Data_06.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,7) = csvread('A_Kick_In_Data_07.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,8) = csvread('A_Kick_In_Data_08.csv' ,0,3,[0 3 9999 3]);
+kickInC4(:,9) = csvread('A_Kick_In_Data_09.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,10) = csvread('A_Kick_In_Data_10.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,11) = csvread('A_Kick_In_Data_11.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,12) = csvread('A_Kick_In_Data_12.csv' ,0,3,[0 3 9999 3]);
@@ -339,18 +333,16 @@ kickInC4(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,3,[0 3 9999 3]);
 
-%  DORSIFLEXION DATA
-
-global DorsiflexionC1;
-DorsiflexionC1(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,4) = csvread('A_Ankle_Dorsiflexion_Data_4.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,5) = csvread('A_Ankle_Dorsiflexion_Data_5.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,6) = csvread('A_Ankle_Dorsiflexion_Data_6.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,7) = csvread('A_Ankle_Dorsiflexion_Data_7.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,8) = csvread('A_Ankle_Dorsiflexion_Data_8.csv' ,0,0,[0 0 9999 0]);
-DorsiflexionC1(:,9) = csvread('A_Ankle_Dorsiflexion_Data_9.csv' ,0,0,[0 0 9999 0]);
+%%  DORSIFLEXION DATA
+DorsiflexionC1(:,1) = csvread('A_Ankle_Dorsiflexion_Data_01.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,2) = csvread('A_Ankle_Dorsiflexion_Data_02.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,3) = csvread('A_Ankle_Dorsiflexion_Data_03.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,4) = csvread('A_Ankle_Dorsiflexion_Data_04.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,5) = csvread('A_Ankle_Dorsiflexion_Data_05.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,6) = csvread('A_Ankle_Dorsiflexion_Data_06.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,7) = csvread('A_Ankle_Dorsiflexion_Data_07.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,8) = csvread('A_Ankle_Dorsiflexion_Data_08.csv' ,0,0,[0 0 9999 0]);
+DorsiflexionC1(:,9) = csvread('A_Ankle_Dorsiflexion_Data_09.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,10) = csvread('A_Ankle_Dorsiflexion_Data_10.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,11) = csvread('A_Ankle_Dorsiflexion_Data_11.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,12) = csvread('A_Ankle_Dorsiflexion_Data_12.csv' ,0,0,[0 0 9999 0]);
@@ -383,17 +375,15 @@ DorsiflexionC1(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,0,[0 0 9999
 DorsiflexionC1(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-
-global DorsiflexionC2;
-DorsiflexionC2(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,4) = csvread('A_Ankle_Dorsiflexion_Data_4.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,5) = csvread('A_Ankle_Dorsiflexion_Data_5.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,6) = csvread('A_Ankle_Dorsiflexion_Data_6.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,7) = csvread('A_Ankle_Dorsiflexion_Data_7.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,8) = csvread('A_Ankle_Dorsiflexion_Data_8.csv' ,0,1,[0 1 9999 1]);
-DorsiflexionC2(:,9) = csvread('A_Ankle_Dorsiflexion_Data_9.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,1) = csvread('A_Ankle_Dorsiflexion_Data_01.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,2) = csvread('A_Ankle_Dorsiflexion_Data_02.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,3) = csvread('A_Ankle_Dorsiflexion_Data_03.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,4) = csvread('A_Ankle_Dorsiflexion_Data_04.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,5) = csvread('A_Ankle_Dorsiflexion_Data_05.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,6) = csvread('A_Ankle_Dorsiflexion_Data_06.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,7) = csvread('A_Ankle_Dorsiflexion_Data_07.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,8) = csvread('A_Ankle_Dorsiflexion_Data_08.csv' ,0,1,[0 1 9999 1]);
+DorsiflexionC2(:,9) = csvread('A_Ankle_Dorsiflexion_Data_09.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,10) = csvread('A_Ankle_Dorsiflexion_Data_10.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,11) = csvread('A_Ankle_Dorsiflexion_Data_11.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,12) = csvread('A_Ankle_Dorsiflexion_Data_12.csv' ,0,1,[0 1 9999 1]);
@@ -426,16 +416,15 @@ DorsiflexionC2(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,1,[0 1 9999
 DorsiflexionC2(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,1,[0 1 9999 1]);
 
-global DorsiflexionC3;
-DorsiflexionC3(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,4) = csvread('A_Ankle_Dorsiflexion_Data_4.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,5) = csvread('A_Ankle_Dorsiflexion_Data_5.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,6) = csvread('A_Ankle_Dorsiflexion_Data_6.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,7) = csvread('A_Ankle_Dorsiflexion_Data_7.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,8) = csvread('A_Ankle_Dorsiflexion_Data_8.csv' ,0,2,[0 2 9999 2]);
-DorsiflexionC3(:,9) = csvread('A_Ankle_Dorsiflexion_Data_9.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,1) = csvread('A_Ankle_Dorsiflexion_Data_01.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,2) = csvread('A_Ankle_Dorsiflexion_Data_02.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,3) = csvread('A_Ankle_Dorsiflexion_Data_03.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,4) = csvread('A_Ankle_Dorsiflexion_Data_04.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,5) = csvread('A_Ankle_Dorsiflexion_Data_05.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,6) = csvread('A_Ankle_Dorsiflexion_Data_06.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,7) = csvread('A_Ankle_Dorsiflexion_Data_07.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,8) = csvread('A_Ankle_Dorsiflexion_Data_08.csv' ,0,2,[0 2 9999 2]);
+DorsiflexionC3(:,9) = csvread('A_Ankle_Dorsiflexion_Data_09.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,10) = csvread('A_Ankle_Dorsiflexion_Data_10.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,11) = csvread('A_Ankle_Dorsiflexion_Data_11.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,12) = csvread('A_Ankle_Dorsiflexion_Data_12.csv' ,0,2,[0 2 9999 2]);
@@ -468,16 +457,15 @@ DorsiflexionC3(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,2,[0 2 9999
 DorsiflexionC3(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,2,[0 2 9999 2]);
 
-global DorsiflexionC4;
-DorsiflexionC4(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,4) = csvread('A_Ankle_Dorsiflexion_Data_4.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,5) = csvread('A_Ankle_Dorsiflexion_Data_5.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,6) = csvread('A_Ankle_Dorsiflexion_Data_6.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,7) = csvread('A_Ankle_Dorsiflexion_Data_7.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,8) = csvread('A_Ankle_Dorsiflexion_Data_8.csv' ,0,3,[0 3 9999 3]);
-DorsiflexionC4(:,9) = csvread('A_Ankle_Dorsiflexion_Data_9.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,1) = csvread('A_Ankle_Dorsiflexion_Data_01.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,2) = csvread('A_Ankle_Dorsiflexion_Data_02.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,3) = csvread('A_Ankle_Dorsiflexion_Data_03.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,4) = csvread('A_Ankle_Dorsiflexion_Data_04.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,5) = csvread('A_Ankle_Dorsiflexion_Data_05.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,6) = csvread('A_Ankle_Dorsiflexion_Data_06.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,7) = csvread('A_Ankle_Dorsiflexion_Data_07.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,8) = csvread('A_Ankle_Dorsiflexion_Data_08.csv' ,0,3,[0 3 9999 3]);
+DorsiflexionC4(:,9) = csvread('A_Ankle_Dorsiflexion_Data_09.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,10) = csvread('A_Ankle_Dorsiflexion_Data_10.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,11) = csvread('A_Ankle_Dorsiflexion_Data_11.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,12) = csvread('A_Ankle_Dorsiflexion_Data_12.csv' ,0,3,[0 3 9999 3]);
@@ -510,18 +498,17 @@ DorsiflexionC4(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,3,[0 3 9999
 DorsiflexionC4(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,3,[0 3 9999 3]);
 
-%  DORSIFLEXION DATA
+%%  PLANTARFLEXION DATA
 
-global PlantarflexionC1;
-PlantarflexionC1(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,4) = csvread('A_Ankle_Plantarflexion_Data_4.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,5) = csvread('A_Ankle_Plantarflexion_Data_5.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,6) = csvread('A_Ankle_Plantarflexion_Data_6.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,7) = csvread('A_Ankle_Plantarflexion_Data_7.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,8) = csvread('A_Ankle_Plantarflexion_Data_8.csv' ,0,0,[0 0 9999 0]);
-PlantarflexionC1(:,9) = csvread('A_Ankle_Plantarflexion_Data_9.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,1) = csvread('A_Ankle_Plantarflexion_Data_01.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,2) = csvread('A_Ankle_Plantarflexion_Data_02.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,3) = csvread('A_Ankle_Plantarflexion_Data_03.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,4) = csvread('A_Ankle_Plantarflexion_Data_04.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,5) = csvread('A_Ankle_Plantarflexion_Data_05.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,6) = csvread('A_Ankle_Plantarflexion_Data_06.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,7) = csvread('A_Ankle_Plantarflexion_Data_07.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,8) = csvread('A_Ankle_Plantarflexion_Data_08.csv' ,0,0,[0 0 9999 0]);
+PlantarflexionC1(:,9) = csvread('A_Ankle_Plantarflexion_Data_09.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,10) = csvread('A_Ankle_Plantarflexion_Data_10.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,11) = csvread('A_Ankle_Plantarflexion_Data_11.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,12) = csvread('A_Ankle_Plantarflexion_Data_12.csv' ,0,0,[0 0 9999 0]);
@@ -554,16 +541,15 @@ PlantarflexionC1(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,0,[0 0 
 PlantarflexionC1(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-global PlantarflexionC2;
-PlantarflexionC2(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,4) = csvread('A_Ankle_Plantarflexion_Data_4.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,5) = csvread('A_Ankle_Plantarflexion_Data_5.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,6) = csvread('A_Ankle_Plantarflexion_Data_6.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,7) = csvread('A_Ankle_Plantarflexion_Data_7.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,8) = csvread('A_Ankle_Plantarflexion_Data_8.csv' ,0,1,[0 1 9999 1]);
-PlantarflexionC2(:,9) = csvread('A_Ankle_Plantarflexion_Data_9.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,1) = csvread('A_Ankle_Plantarflexion_Data_01.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,2) = csvread('A_Ankle_Plantarflexion_Data_02.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,3) = csvread('A_Ankle_Plantarflexion_Data_03.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,4) = csvread('A_Ankle_Plantarflexion_Data_04.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,5) = csvread('A_Ankle_Plantarflexion_Data_05.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,6) = csvread('A_Ankle_Plantarflexion_Data_06.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,7) = csvread('A_Ankle_Plantarflexion_Data_07.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,8) = csvread('A_Ankle_Plantarflexion_Data_08.csv' ,0,1,[0 1 9999 1]);
+PlantarflexionC2(:,9) = csvread('A_Ankle_Plantarflexion_Data_09.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,10) = csvread('A_Ankle_Plantarflexion_Data_10.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,11) = csvread('A_Ankle_Plantarflexion_Data_11.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,12) = csvread('A_Ankle_Plantarflexion_Data_12.csv' ,0,1,[0 1 9999 1]);
@@ -596,16 +582,15 @@ PlantarflexionC2(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,1,[0 1 
 PlantarflexionC2(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,1,[0 1 9999 1]);
 
-global PlantarflexionC3;
-PlantarflexionC3(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,4) = csvread('A_Ankle_Plantarflexion_Data_4.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,5) = csvread('A_Ankle_Plantarflexion_Data_5.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,6) = csvread('A_Ankle_Plantarflexion_Data_6.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,7) = csvread('A_Ankle_Plantarflexion_Data_7.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,8) = csvread('A_Ankle_Plantarflexion_Data_8.csv' ,0,2,[0 2 9999 2]);
-PlantarflexionC3(:,9) = csvread('A_Ankle_Plantarflexion_Data_9.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,1) = csvread('A_Ankle_Plantarflexion_Data_01.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,2) = csvread('A_Ankle_Plantarflexion_Data_02.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,3) = csvread('A_Ankle_Plantarflexion_Data_03.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,4) = csvread('A_Ankle_Plantarflexion_Data_04.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,5) = csvread('A_Ankle_Plantarflexion_Data_05.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,6) = csvread('A_Ankle_Plantarflexion_Data_06.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,7) = csvread('A_Ankle_Plantarflexion_Data_07.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,8) = csvread('A_Ankle_Plantarflexion_Data_08.csv' ,0,2,[0 2 9999 2]);
+PlantarflexionC3(:,9) = csvread('A_Ankle_Plantarflexion_Data_09.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,10) = csvread('A_Ankle_Plantarflexion_Data_10.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,11) = csvread('A_Ankle_Plantarflexion_Data_11.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,12) = csvread('A_Ankle_Plantarflexion_Data_12.csv' ,0,2,[0 2 9999 2]);
@@ -638,16 +623,15 @@ PlantarflexionC3(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,2,[0 2 
 PlantarflexionC3(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,2,[0 2 9999 2]);
 
-global PlantarflexionC4;A_Ankle_Dorsiflexion_Data_1
-PlantarflexionC4(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,4) = csvread('A_Ankle_Plantarflexion_Data_4.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,5) = csvread('A_Ankle_Plantarflexion_Data_5.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,6) = csvread('A_Ankle_Plantarflexion_Data_6.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,7) = csvread('A_Ankle_Plantarflexion_Data_7.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,8) = csvread('A_Ankle_Plantarflexion_Data_8.csv' ,0,3,[0 3 9999 3]);
-PlantarflexionC4(:,9) = csvread('A_Ankle_Plantarflexion_Data_9.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,1) = csvread('A_Ankle_Plantarflexion_Data_01.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,2) = csvread('A_Ankle_Plantarflexion_Data_02.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,3) = csvread('A_Ankle_Plantarflexion_Data_03.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,4) = csvread('A_Ankle_Plantarflexion_Data_04.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,5) = csvread('A_Ankle_Plantarflexion_Data_05.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,6) = csvread('A_Ankle_Plantarflexion_Data_06.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,7) = csvread('A_Ankle_Plantarflexion_Data_07.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,8) = csvread('A_Ankle_Plantarflexion_Data_08.csv' ,0,3,[0 3 9999 3]);
+PlantarflexionC4(:,9) = csvread('A_Ankle_Plantarflexion_Data_09.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,10) = csvread('A_Ankle_Plantarflexion_Data_10.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,11) = csvread('A_Ankle_Plantarflexion_Data_11.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,12) = csvread('A_Ankle_Plantarflexion_Data_12.csv' ,0,3,[0 3 9999 3]);
@@ -680,18 +664,16 @@ PlantarflexionC4(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,3,[0 3 
 PlantarflexionC4(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,3,[0 3 9999 3]);
 
-%ANKLE PlantarFLEXION IN DATA
-
-global Rest1;
-Rest1(:,1) = csvread('A_Relax_1.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,2) = csvread('A_Relax_2.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,3) = csvread('A_Relax_3.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,4) = csvread('A_Relax_4.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,5) = csvread('A_Relax_5.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,6) = csvread('A_Relax_6.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,7) = csvread('A_Relax_7.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,8) = csvread('A_Relax_8.csv' ,0,0,[0 0 9999 0]);
-Rest1(:,9) = csvread('A_Relax_9.csv' ,0,0,[0 0 9999 0]);
+%% REST data
+Rest1(:,1) = csvread('A_Relax_01.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,2) = csvread('A_Relax_02.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,3) = csvread('A_Relax_03.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,4) = csvread('A_Relax_04.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,5) = csvread('A_Relax_05.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,6) = csvread('A_Relax_06.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,7) = csvread('A_Relax_07.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,8) = csvread('A_Relax_08.csv' ,0,0,[0 0 9999 0]);
+Rest1(:,9) = csvread('A_Relax_09.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,10) = csvread('A_Relax_10.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,11) = csvread('A_Relax_11.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,12) = csvread('A_Relax_12.csv' ,0,0,[0 0 9999 0]);
@@ -724,17 +706,15 @@ Rest1(:,38) = csvread('A_Relax_38.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,39) = csvread('A_Relax_39.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,40) = csvread('A_Relax_40.csv' ,0,0,[0 0 9999 0]);
 
-
-global Rest2;
-Rest2(:,1) = csvread('A_Relax_1.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,2) = csvread('A_Relax_2.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,3) = csvread('A_Relax_3.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,4) = csvread('A_Relax_4.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,5) = csvread('A_Relax_5.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,6) = csvread('A_Relax_6.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,7) = csvread('A_Relax_7.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,8) = csvread('A_Relax_8.csv' ,0,1,[0 1 9999 1]);
-Rest2(:,9) = csvread('A_Relax_9.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,1) = csvread('A_Relax_01.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,2) = csvread('A_Relax_02.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,3) = csvread('A_Relax_03.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,4) = csvread('A_Relax_04.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,5) = csvread('A_Relax_05.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,6) = csvread('A_Relax_06.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,7) = csvread('A_Relax_07.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,8) = csvread('A_Relax_08.csv' ,0,1,[0 1 9999 1]);
+Rest2(:,9) = csvread('A_Relax_09.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,10) = csvread('A_Relax_10.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,11) = csvread('A_Relax_11.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,12) = csvread('A_Relax_12.csv' ,0,1,[0 1 9999 1]);
@@ -767,16 +747,15 @@ Rest2(:,38) = csvread('A_Relax_38.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,39) = csvread('A_Relax_39.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,40) = csvread('A_Relax_40.csv' ,0,1,[0 1 9999 1]);
 
-global Rest3;
-Rest3(:,1) = csvread('A_Relax_1.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,2) = csvread('A_Relax_2.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,3) = csvread('A_Relax_3.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,4) = csvread('A_Relax_4.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,5) = csvread('A_Relax_5.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,6) = csvread('A_Relax_6.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,7) = csvread('A_Relax_7.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,8) = csvread('A_Relax_8.csv' ,0,2,[0 2 9999 2]);
-Rest3(:,9) = csvread('A_Relax_9.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,1) = csvread('A_Relax_01.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,2) = csvread('A_Relax_02.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,3) = csvread('A_Relax_03.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,4) = csvread('A_Relax_04.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,5) = csvread('A_Relax_05.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,6) = csvread('A_Relax_06.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,7) = csvread('A_Relax_07.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,8) = csvread('A_Relax_08.csv' ,0,2,[0 2 9999 2]);
+Rest3(:,9) = csvread('A_Relax_09.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,10) = csvread('A_Relax_10.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,11) = csvread('A_Relax_11.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,12) = csvread('A_Relax_12.csv' ,0,2,[0 2 9999 2]);
@@ -809,16 +788,15 @@ Rest3(:,38) = csvread('A_Relax_38.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,39) = csvread('A_Relax_39.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,40) = csvread('A_Relax_40.csv' ,0,2,[0 2 9999 2]);
 
-global Rest4;
-Rest4(:,1) = csvread('A_Relax_1.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,2) = csvread('A_Relax_2.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,3) = csvread('A_Relax_3.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,4) = csvread('A_Relax_4.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,5) = csvread('A_Relax_5.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,6) = csvread('A_Relax_6.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,7) = csvread('A_Relax_7.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,8) = csvread('A_Relax_8.csv' ,0,3,[0 3 9999 3]);
-Rest4(:,9) = csvread('A_Relax_9.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,1) = csvread('A_Relax_01.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,2) = csvread('A_Relax_02.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,3) = csvread('A_Relax_03.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,4) = csvread('A_Relax_04.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,5) = csvread('A_Relax_05.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,6) = csvread('A_Relax_06.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,7) = csvread('A_Relax_07.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,8) = csvread('A_Relax_08.csv' ,0,3,[0 3 9999 3]);
+Rest4(:,9) = csvread('A_Relax_09.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,10) = csvread('A_Relax_10.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,11) = csvread('A_Relax_11.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,12) = csvread('A_Relax_12.csv' ,0,3,[0 3 9999 3]);
@@ -850,6 +828,15 @@ Rest4(:,37) = csvread('A_Relax_37.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,38) = csvread('A_Relax_38.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,39) = csvread('A_Relax_39.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,40) = csvread('A_Relax_40.csv' ,0,3,[0 3 9999 3]);
+
+%% Put Data into arrays%
+kickOut = struct('C1',kickOutC1, 'C2',kickOutC2,'C3',kickOutC3, 'C4',kickOutC4);
+kickIn = struct('C1',kickInC1, 'C2',kickInC2,'C3',kickInC3, 'C4',kickInC4);
+Dorsiflexion = struct('C1',DorsiflexionC1, 'C2',DorsiflexionC2,'C3',DorsiflexionC3, 'C4',DorsiflexionC4);
+Plantarflexion = struct('C1',PlantarflexionC1, 'C2',PlantarflexionC2,'C3',PlantarflexionC3, 'C4',PlantarflexionC4);
+Rest = struct('C1',Rest1, 'C2',Rest2,'C3',Rest3, 'C4',Rest4);
+
+save('AutoLegData','kickOut', 'kickIn', 'Dorsiflexion', 'Plantarflexion', 'Rest');
 
 end
 

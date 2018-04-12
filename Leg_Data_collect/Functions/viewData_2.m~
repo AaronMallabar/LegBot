@@ -1,0 +1,50 @@
+clear;
+clc
+close all;
+
+set(0, 'DefaultFigureWindowStyle','docked');
+
+%global variabls:
+numSamples = 200;
+numClasses = 5;
+kickOutC1 = ones(10000, 40);kickOutC2 = ones(10000, 40);
+kickOutC3 = ones(10000, 40);kickOutC4 = ones(10000, 40);
+kickInC1 = ones(10000, 40);kickInC2 = ones(10000, 40);
+kickInC3 = ones(10000, 40);kickInC4 = ones(10000, 40);
+DorsiflexionC1 = ones(10000, 40);DorsiflexionC2 = ones(10000, 40);
+DorsiflexionC3 = ones(10000, 40);DorsiflexionC4 = ones(10000, 40);
+PlantarflexionC1 = ones(10000, 40);PlantarflexionC2 = ones(10000, 40);
+PlantarflexionC3 = ones(10000, 40);PlantarflexionC4 = ones(10000, 40);
+Rest1 = ones(10000, 40);Rest2 = ones(10000, 40);
+Rest3 = ones(10000, 40);Rest4 = ones(10000, 40);
+
+kickOut = struct('C1',kickOutC1, 'C2',kickOutC2,'C3',kickOutC3, 'C4',kickOutC4);
+kickIn = struct('C1',kickInC1, 'C2',kickInC2,'C3',kickInC3, 'C4',kickInC4);
+Dorsiflextion = struct('C1',DorsiflexionC1, 'C2',DorsiflextonC2,'C3',DorsiflexionC3, 'C4',DorsiflexionC4);
+Plantariflexion = struct('C1',PlantarflexionC1, 'C2',PlantarflexionC2,'C3',PlantarflexionC3, 'C4',PlantarflexionC4);
+Rest = struct('C1',Rest1, 'C2',Rest2,'C3',Rest3, 'C4',Rest4);
+
+readData(kickOut); %read and save as .mat then load it in.
+%load('LegData.mat');
+
+
+%% Plotting Raw Data
+
+plotData();
+
+%% Wavelets
+
+wavelets();
+
+%% Calculate FFT's
+
+CalculateFFT();
+
+%% Power Spectral Density
+
+PSD();
+
+%% SVM
+
+SVM();
+SVM3();
