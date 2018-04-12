@@ -171,6 +171,7 @@ kickOutC4(:,40) = csvread('A_Kick_Out_Data_40.csv' ,0,3,[0 3 9999 3]);
 
 
 %  KICK IN DATA
+global kickInC1;
 kickInC1(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,0,[0 0 9999 0]);
@@ -212,7 +213,7 @@ kickInC1(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,0,[0 0 9999 0]);
 kickInC1(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-
+global kickInC2;
 kickInC2(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,1,[0 1 9999 1]);
@@ -253,7 +254,7 @@ kickInC2(:,37) = csvread('A_Kick_In_Data_37.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,1,[0 1 9999 1]);
 kickInC2(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,1,[0 1 9999 1]);
-
+global kickInC3;
 kickInC3(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,2,[0 2 9999 2]);
@@ -294,7 +295,7 @@ kickInC3(:,37) = csvread('A_Kick_In_Data_37.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,38) = csvread('A_Kick_In_Data_38.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,2,[0 2 9999 2]);
 kickInC3(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,2,[0 2 9999 2]);
-
+global kickInC4;
 kickInC4(:,1) = csvread('A_Kick_In_Data_1.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,2) = csvread('A_Kick_In_Data_2.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,3) = csvread('A_Kick_In_Data_3.csv' ,0,3,[0 3 9999 3]);
@@ -337,6 +338,7 @@ kickInC4(:,39) = csvread('A_Kick_In_Data_39.csv' ,0,3,[0 3 9999 3]);
 kickInC4(:,40) = csvread('A_Kick_In_Data_40.csv' ,0,3,[0 3 9999 3]);
 
 %  DORSIFLEXION DATA
+global DorsiflexionC1;
 DorsiflexionC1(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,0,[0 0 9999 0]);
@@ -378,7 +380,7 @@ DorsiflexionC1(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,0,[0 0 9999
 DorsiflexionC1(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,0,[0 0 9999 0]);
 DorsiflexionC1(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-
+global DorsiflexionC2;
 DorsiflexionC2(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,1,[0 1 9999 1]);
@@ -419,7 +421,7 @@ DorsiflexionC2(:,37) = csvread('A_Ankle_Dorsiflexion_Data_37.csv' ,0,1,[0 1 9999
 DorsiflexionC2(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,1,[0 1 9999 1]);
 DorsiflexionC2(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,1,[0 1 9999 1]);
-
+global DorsiflexionC3;
 DorsiflexionC3(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,2,[0 2 9999 2]);
@@ -460,7 +462,7 @@ DorsiflexionC3(:,37) = csvread('A_Ankle_Dorsiflexion_Data_37.csv' ,0,2,[0 2 9999
 DorsiflexionC3(:,38) = csvread('A_Ankle_Dorsiflexion_Data_38.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,2,[0 2 9999 2]);
 DorsiflexionC3(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,2,[0 2 9999 2]);
-
+global DorsiflexionC4;
 DorsiflexionC4(:,1) = csvread('A_Ankle_Dorsiflexion_Data_1.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,2) = csvread('A_Ankle_Dorsiflexion_Data_2.csv' ,0,3,[0 3 9999 3]);
 DorsiflexionC4(:,3) = csvread('A_Ankle_Dorsiflexion_Data_3.csv' ,0,3,[0 3 9999 3]);
@@ -503,6 +505,7 @@ DorsiflexionC4(:,39) = csvread('A_Ankle_Dorsiflexion_Data_39.csv' ,0,3,[0 3 9999
 DorsiflexionC4(:,40) = csvread('A_Ankle_Dorsiflexion_Data_40.csv' ,0,3,[0 3 9999 3]);
 
 %  DORSIFLEXION DATA
+global PlantarflexionC1;
 PlantarflexionC1(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,0,[0 0 9999 0]);
@@ -544,7 +547,7 @@ PlantarflexionC1(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,0,[0 0 
 PlantarflexionC1(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,0,[0 0 9999 0]);
 PlantarflexionC1(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,0,[0 0 9999 0]);
 
-
+global PlantarflexionC2;
 PlantarflexionC2(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,1,[0 1 9999 1]);
@@ -585,7 +588,7 @@ PlantarflexionC2(:,37) = csvread('A_Ankle_Plantarflexion_Data_37.csv' ,0,1,[0 1 
 PlantarflexionC2(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,1,[0 1 9999 1]);
 PlantarflexionC2(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,1,[0 1 9999 1]);
-
+global PlantarflexionC3;
 PlantarflexionC3(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,2,[0 2 9999 2]);
@@ -626,7 +629,7 @@ PlantarflexionC3(:,37) = csvread('A_Ankle_Plantarflexion_Data_37.csv' ,0,2,[0 2 
 PlantarflexionC3(:,38) = csvread('A_Ankle_Plantarflexion_Data_38.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,2,[0 2 9999 2]);
 PlantarflexionC3(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,2,[0 2 9999 2]);
-
+global PlantarflexionC4;
 PlantarflexionC4(:,1) = csvread('A_Ankle_Plantarflexion_Data_1.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,2) = csvread('A_Ankle_Plantarflexion_Data_2.csv' ,0,3,[0 3 9999 3]);
 PlantarflexionC4(:,3) = csvread('A_Ankle_Plantarflexion_Data_3.csv' ,0,3,[0 3 9999 3]);
@@ -669,6 +672,7 @@ PlantarflexionC4(:,39) = csvread('A_Ankle_Plantarflexion_Data_39.csv' ,0,3,[0 3 
 PlantarflexionC4(:,40) = csvread('A_Ankle_Plantarflexion_Data_40.csv' ,0,3,[0 3 9999 3]);
 
 %ANKLE PlantarFLEXION IN DATA
+global Rest1;
 Rest1(:,1) = csvread('A_Relax_1.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,2) = csvread('A_Relax_2.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,3) = csvread('A_Relax_3.csv' ,0,0,[0 0 9999 0]);
@@ -710,7 +714,7 @@ Rest1(:,38) = csvread('A_Relax_38.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,39) = csvread('A_Relax_39.csv' ,0,0,[0 0 9999 0]);
 Rest1(:,40) = csvread('A_Relax_40.csv' ,0,0,[0 0 9999 0]);
 
-
+global Rest2;
 Rest2(:,1) = csvread('A_Relax_1.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,2) = csvread('A_Relax_2.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,3) = csvread('A_Relax_3.csv' ,0,1,[0 1 9999 1]);
@@ -752,6 +756,7 @@ Rest2(:,38) = csvread('A_Relax_38.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,39) = csvread('A_Relax_39.csv' ,0,1,[0 1 9999 1]);
 Rest2(:,40) = csvread('A_Relax_40.csv' ,0,1,[0 1 9999 1]);
 
+global Rest3;
 Rest3(:,1) = csvread('A_Relax_1.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,2) = csvread('A_Relax_2.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,3) = csvread('A_Relax_3.csv' ,0,2,[0 2 9999 2]);
@@ -792,7 +797,7 @@ Rest3(:,37) = csvread('A_Relax_37.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,38) = csvread('A_Relax_38.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,39) = csvread('A_Relax_39.csv' ,0,2,[0 2 9999 2]);
 Rest3(:,40) = csvread('A_Relax_40.csv' ,0,2,[0 2 9999 2]);
-
+global Rest4;
 Rest4(:,1) = csvread('A_Relax_1.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,2) = csvread('A_Relax_2.csv' ,0,3,[0 3 9999 3]);
 Rest4(:,3) = csvread('A_Relax_3.csv' ,0,3,[0 3 9999 3]);
