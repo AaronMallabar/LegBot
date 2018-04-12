@@ -630,6 +630,8 @@ psdxSum_Dorsi4 = sum(10*log10(psdx));
 %close all;
 %data1 = [kickOutC1(4500:5500)',kickOutC2(4500:5500)',kickOutC3(4500:5500)', kickOutC4(4500:5500)'];
 %data2 = [kickInC2(4500:5500)',kickInC2(4500:5500)',kickInC3(4500:5500)', kickInC4(4500:5500)'];
+
+
 kickOutC1_Max = max(kickOutC1);
 kickOutC2_Max = max(kickOutC2);
 kickOutC3_Max = max(kickOutC3);
