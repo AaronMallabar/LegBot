@@ -7,124 +7,15 @@ set(0, 'DefaultFigureWindowStyle','docked');
 load('LegData.mat');
 
 %global variabls:
-numSamples = 200;
+numSamples = 100;
 numClasses = 5;
 %% Plotting Raw Data
-plotData();
 
+plotData();
 
 %% Wavelets
 
-kickIn = kickInC4(:,1);
-kickOut = kickOutC4(:,1);
-Dorsiflexion = DorsiflexionC4(:,1);
-plantarflexion = PlantarflexionC4(:,1);
-rest = Rest4(:,1);
-
-[kickInWave,l] = wavedec(kickIn,3,'db2');
-KickInapprox = appcoef(kickInWave,l,'db2');
-[KI1,KI2,KI3] = detcoef(kickInWave,l,[1 2 3]);
-figure(6);
-subplot(5,1,1);
-plot(kickIn);
-title('Kick In: Original');
-subplot(5,1,2)
-plot(KickInapprox)
-title('Approximation Coefficients')
-subplot(5,1,3)
-plot(KI3)
-title('Level 3 Detail Coefficients')
-subplot(5,1,4)
-plot(KI2)
-title('Level 2 Detail Coefficients')
-subplot(5,1,5)
-plot(KI1)
-title('Level 1 Detail Coefficients')
-
-
-[kickOutWave,l] = wavedec(kickOut,3,'db2');
-KickOutapprox = appcoef(kickOutWave,l,'db2');
-[KO1,KO2,KO3] = detcoef(kickOutWave,l,[1 2 3]);
-figure(7);
-set(gcf,'Position',get(0,'Screensize'));
-subplot(5,1,1);
-plot(kickOut);
-title('Kick Out: Original');
-subplot(5,1,2)
-plot(KickOutapprox)
-title('Approximation Coefficients')
-subplot(5,1,3)
-plot(KO3)
-title('Level 3 Detail Coefficients')
-subplot(5,1,4)
-plot(KO2)
-title('Level 2 Detail Coefficients')
-subplot(5,1,5)
-plot(KO1)
-title('Level 1 Detail Coefficients')
-
-[DorsiflexionWave,l] = wavedec(Dorsiflexion,3,'db2');
-Dorsiflexionapprox = appcoef(DorsiflexionWave,l,'db2');
-[D1,D2,D3] = detcoef(DorsiflexionWave,l,[1 2 3]);
-figure(8);
-set(gcf,'Position',get(0,'Screensize'));
-subplot(5,1,1);
-plot(Dorsiflexion);
-title('Dorsiflexion: Original');
-subplot(5,1,2)
-plot(Dorsiflexionapprox)
-title('Approximation Coefficients')
-subplot(5,1,3)
-plot(D3)
-title('Level 3 Detail Coefficients')
-subplot(5,1,4)
-plot(D2)
-title('Level 2 Detail Coefficients')
-subplot(5,1,5)
-plot(D1)
-title('Level 1 Detail Coefficients')
-
-[PlantarflexionWave,l] = wavedec(plantarflexion,3,'db2');
-Plantarflexionapprox = appcoef(PlantarflexionWave,l,'db2');
-[P1,P2,P3] = detcoef(PlantarflexionWave,l,[1 2 3]);
-figure(9);
-set(gcf,'Position',get(0,'Screensize'));
-subplot(5,1,1);
-plot(plantarflexion);
-title('Plantarflexion: Original');
-subplot(5,1,2)
-plot(Plantarflexionapprox)
-title('Approximation Coefficients')
-subplot(5,1,3)
-plot(P3)
-title('Level 3 Detail Coefficients')
-subplot(5,1,4)
-plot(P2)
-title('Level 2 Detail Coefficients')
-subplot(5,1,5)
-plot(P1)
-title('Level 1 Detail Coefficients')
-
-[restWave,l] = wavedec(rest,3,'db2');
-restapprox = appcoef(restWave,l,'db2');
-[r1,r2,r3] = detcoef(restWave,l,[1 2 3]);
-figure(10);
-subplot(5,1,1);
-plot(rest);
-title('rest: Original');
-subplot(5,1,2)
-plot(restapprox)
-title('Approximation Coefficients')
-subplot(5,1,3)
-plot(r3)
-title('Level 3 Detail Coefficients')
-subplot(5,1,4)
-plot(r2)
-title('Level 2 Detail Coefficients')
-subplot(5,1,5)
-plot(r1)
-title('Level 1 Detail Coefficients')
-
+wavelets();
 
 %% Calculate FFT's
 
@@ -740,6 +631,18 @@ data3 = [DorsiflexionC1_Range',DorsiflexionC4_Range'];
 data4 = [PlantarflexionC1_Range',PlantarflexionC4_Range'];
 data5 = [Rest1_Range', Rest4_Range'];
 
+data1 = data1(21:40, :);
+data2 = data2(21:40, :);
+data3 = data3(21:40, :);
+data4 = data4(21:40, :);
+data5 = data5(21:40, :);
+
+% data1 = data1(1:20, :);
+% data2 = data2(1:20, :);
+% data3 = data3(1:20, :);
+% data4 = data4(1:20, :);
+% data5 = data5(1:20, :);
+
 % data1 = [kickOutC3_sum',kickOutC4_sum'];
 % data2 = [kickInC3_sum',kickInC4_sum'];
 % data3 = [DorsiflexionC3_sum',DorsiflexionC4_sum'];
@@ -766,7 +669,7 @@ labels = labels';
 
 figure(21);
 %labels2 = [ones(40,1); 2*ones(40,1); 3*ones(40,1); 4*ones(40,1); 5*ones(40,1)];
-gscatter(dataAll(:,1),dataAll(:,2),labels, 'brgym', '.....',15); %Creats empty scatterplot 
+gscatter(dataAll(:,1),dataAll(:,2),labels); 
 h = gca; %get current axis
 lims = [h.XLim h.YLim]; % Extract the x and y axis limits
 title('Leg Movement');
@@ -838,14 +741,13 @@ predictedlabels = predictedlabels';
 %[0 0 1; 0 1 0; 1 0 0; 1 0 1; .5 .1 1 ]
 
 figure(22);
-h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,...
-    'bgrcy');
+h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
 hold on
-h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels);
+h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
 title('{\bf Leg movement Classification regions}');
 xlabel('Channel 1');
 ylabel('Channel 4');
-legend(h,{'KickIn Region','kickOut Region','Dorsiflexion Region', 'Plantarflexion Region', 'Rest region'...
+legend(h,{'Plantarflexion Region','Rest region','Dorsiflexion Region','KickOut Region','kickIn Region',  ...
     'Observed KickIn','Observed kickOut','Observed Dorsiflexion', 'Observed Plantarflexion', 'Observed Rest '},...
     'Location','Northwest');
 axis tight
