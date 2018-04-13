@@ -1,120 +1,123 @@
-function [] = CalculateFFT()
-Fs = 960;
-channelNumbers = 5;
+function [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum] = CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum)
 
-t = (0:length(Rest4(:,1))-1)/Fs;
+Fs = 960;
+t = (0:length(Rest.C4(:,1))-1)/Fs;
 Lt=length(t);
 f=(-Lt/2+1:Lt/2)*Fs/Lt;
 
-fft_1 = abs(fftshift(fft(Rest1)))/Lt;
-fft_2 = abs(fftshift(fft(Rest2)))/Lt;
-fft_3 = abs(fftshift(fft(Rest3)))/Lt;
-fft_4 = abs(fftshift(fft(Rest4)))/Lt;
-fft_5 = abs(fftshift(fft(kickInC1)))/Lt;
-fft_6 = abs(fftshift(fft(kickInC2)))/Lt;
-fft_7 = abs(fftshift(fft(kickInC3)))/Lt;
-fft_8 = abs(fftshift(fft(kickInC4)))/Lt;
-fft_9 = abs(fftshift(fft(kickOutC1)))/Lt;
-fft_10 = abs(fftshift(fft(kickOutC2)))/Lt;
-fft_11 = abs(fftshift(fft(kickOutC3)))/Lt;
-fft_12 = abs(fftshift(fft(kickOutC4)))/Lt;
-fft_13 = abs(fftshift(fft(PlantarflexionC1)))/Lt;
-fft_14 = abs(fftshift(fft(PlantarflexionC2)))/Lt;
-fft_15 = abs(fftshift(fft(PlantarflexionC3)))/Lt;
-fft_16 = abs(fftshift(fft(PlantarflexionC4)))/Lt;
-fft_17 = abs(fftshift(fft(DorsiflexionC1)))/Lt;
-fft_18 = abs(fftshift(fft(DorsiflexionC2)))/Lt;
-fft_19 = abs(fftshift(fft(DorsiflexionC3)))/Lt;
-fft_20 = abs(fftshift(fft(DorsiflexionC4)))/Lt;
+Rest.FFT_C1 = abs(fftshift(fft(Rest.C1)))/Lt;
+Rest.FFT_C2 = abs(fftshift(fft(Rest.C2)))/Lt;
+Rest.FFT_C3 = abs(fftshift(fft(Rest.C3)))/Lt;
+Rest.FFT_C4 = abs(fftshift(fft(Rest.C4)))/Lt;
 
-figure(11)
+kickIn.FFT_C1 = abs(fftshift(fft(kickIn.C1)))/Lt;
+kickIn.FFT_C2 = abs(fftshift(fft(kickIn.C2)))/Lt;
+kickIn.FFT_C3 = abs(fftshift(fft(kickIn.C3)))/Lt;
+kickIn.FFT_C4 = abs(fftshift(fft(kickIn.C4)))/Lt;
+
+kickOut.FFT_C1 = abs(fftshift(fft(kickOut.C1)))/Lt;
+kickOut.FFT_C2 = abs(fftshift(fft(kickOut.C2)))/Lt;
+kickOut.FFT_C3 = abs(fftshift(fft(kickOut.C3)))/Lt;
+kickOut.FFT_C4 = abs(fftshift(fft(kickOut.C4)))/Lt;
+
+Plantarflexion.FFT_C1 = abs(fftshift(fft(Plantarflexion.C1)))/Lt;
+Plantarflexion.FFT_C2 = abs(fftshift(fft(Plantarflexion.C2)))/Lt;
+Plantarflexion.FFT_C3 = abs(fftshift(fft(Plantarflexion.C3)))/Lt;
+Plantarflexion.FFT_C4 = abs(fftshift(fft(Plantarflexion.C4)))/Lt;
+
+Dorsiflexion.FFT_C1 = abs(fftshift(fft(Dorsiflexion.C1)))/Lt;
+Dorsiflexion.FFT_C2 = abs(fftshift(fft(Dorsiflexion.C2)))/Lt;
+Dorsiflexion.FFT_C3 = abs(fftshift(fft(Dorsiflexion.C3)))/Lt;
+Dorsiflexion.FFT_C4 = abs(fftshift(fft(Dorsiflexion.C4)))/Lt;
+
+figure(figureNum); figureNum = figureNum+1;
 hold all
 subplot(4,1,1);
-plot(f, fft_1);
+plot(f, Rest.FFT_C1);
 axis([-200 200 , 0 .01])
 title('Rest1');
 subplot(4,1,2);
-plot(f, fft_2);
+plot(f, Rest.FFT_C2);
 axis([-200 200 , 0 .01])
 title('Rest2');
 subplot(4,1,3);
-plot(f, fft_3);
+plot(f, Rest.FFT_C3);
 axis([-200 200 , 0 .01])
 title('Rest3');
 subplot(4,1,4);
-plot(f, fft_4);
+plot(f, Rest.FFT_C4);
 axis([-200 200 , 0 .01])
 title('Rest4');
 
-figure(12)
+figure(figureNum); figureNum = figureNum+1;
 subplot(4,1,1);
-plot(f, fft_5);
+plot(f, kickIn.FFT_C1);
 axis([-200 200 , 0 .05])
 title('kickInC1');
 subplot(4,1,2);
-plot(f, fft_6);
+plot(f, kickIn.FFT_C2);
 axis([-200 200 , 0 .05])
 title('kickInC2');
 subplot(4,1,3);
-plot(f, fft_7);
+plot(f, kickIn.FFT_C3);
 axis([-200 200 , 0 .05])
 title('kickInC3');
 subplot(4,1,4);
-plot(f, fft_8);
+plot(f, kickIn.FFT_C4);
 axis([-200 200 , 0 .05])
 title('kickInC4');
 
-figure(13)
+figure(figureNum); figureNum = figureNum+1;
 subplot(4,1,1);
-plot(f, fft_9);
+plot(f, kickOut.FFT_C1);
 axis([-200 200 , 0 .05])
 title('kickOutC1');
 subplot(4,1,2);
-plot(f, fft_10);
+plot(f, kickOut.FFT_C2);
 axis([-200 200 , 0 .05])
 title('kickOutC2');
 subplot(4,1,3);
-plot(f, fft_11);
+plot(f, kickOut.FFT_C3);
 axis([-200 200 , 0 .05])
 title('kickOutC3');
 subplot(4,1,4);
-plot(f, fft_12);
+plot(f, kickOut.FFT_C4);
 axis([-200 200 , 0 .05])
 title('kickOutC4');
 
-figure(14)
+figure(figureNum); figureNum = figureNum+1;
 subplot(4,1,1);
-plot(f, fft_13);
+plot(f, Plantarflexion.FFT_C1);
 axis([-200 200 , 0 .01])
 title('PlantarflexionC1');
 subplot(4,1,2);
-plot(f, fft_14);
+plot(f, Plantarflexion.FFT_C1);
 axis([-200 200 , 0 .01])
 title('PlantarflexionC2');
 subplot(4,1,3);
-plot(f, fft_15);
+plot(f, Plantarflexion.FFT_C1);
 axis([-200 200 , 0 .01])
 title('PlantarflexionC3');
 subplot(4,1,4);
-plot(f, fft_16);
+plot(f, Plantarflexion.FFT_C1);
 axis([-200 200 , 0 .01])
 title('PlantarflexionC4');
 
-figure(15)
+figure(figureNum); figureNum = figureNum+1;
 subplot(4,1,1);
-plot(f, fft_17);
+plot(f, Dorsiflexion.FFT_C1);
 axis([-200 200 , 0 .01])
 title('DorsiflexionC1');
 subplot(4,1,2);
-plot(f, fft_18);
+plot(f, Dorsiflexion.FFT_C2);
 axis([-200 200 , 0 .01])
 title('DorsiflexionC2');
 subplot(4,1,3);
-plot(f, fft_19);
+plot(f, Dorsiflexion.FFT_C3);
 axis([-200 200 , 0 .01])
 title('DorsiflexionC3');
 subplot(4,1,4);
-plot(f, fft_20);
+plot(f, Dorsiflexion.FFT_C4);
 axis([-200 200 , 0 .01])
 title('DorsiflexionC4');
 
