@@ -86,7 +86,7 @@ xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
 freq1 = 0:Fs/length(kickIn.C1):Fs/2;
-figure(figureNum); figureNum = figureNum+1;
+figure(17)
 subplot(2,2,1);
 plot(freq1,10*log10(psdx))
 grid on
@@ -161,7 +161,7 @@ xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
 freq2 = 0:Fs/length(kickOut.C1):Fs/2;
-figure(figureNum); figureNum = figureNum+1;
+figure(18)
 subplot(2,2,1);
 plot(freq2,10*log10(psdx))
 grid on
@@ -236,7 +236,7 @@ xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
 freq2 = 0:Fs/length(Plantarflexion.C1):Fs/2;
-figure(figureNum); figureNum = figureNum+1;
+figure(19)
 subplot(2,2,1);
 plot(freq2,10*log10(psdx))
 grid on
@@ -310,7 +310,7 @@ xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
 freq2 = 0:Fs/length(Dorsiflexion.C1):Fs/2;
-figure(figureNum); figureNum = figureNum+1;
+figure(20)
 subplot(2,2,1);
 plot(freq2,10*log10(psdx))
 grid on
@@ -340,40 +340,40 @@ title('Periodogram Using FFT Dorsi C2 (up)')
 mxerr(18,:) = max(psdx'-periodogram(Dorsiflexion.C2,rectwin(length(Dorsiflexion.C2)),length(Dorsiflexion.C2),Fs));
 psdxSum_Dorsi2 = sum(10*log10(psdx));
 
-%x19 = DorsiflexionC3;
-N = length(Dorsiflexion.C3);
-xdft = fft(Dorsiflexion.C3);
+x19 = DorsiflexionC3;
+N = length(x19);
+xdft = fft(x19);
 xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
-freq2 = 0:Fs/length(Dorsiflexion.C3):Fs/2;
+freq2 = 0:Fs/length(x19):Fs/2;
 subplot(2,2,3);
 plot(freq2,10*log10(psdx))
 grid on
 title('Periodogram Using FFT Dorsi C3 (up)')
 xlabel('Frequency (Hz)')
 ylabel('Power/Frequency (dB/Hz)')
-periodogram(Dorsiflexion.C3,rectwin(length(Dorsiflexion.C3)),length(Dorsiflexion.C3),Fs)
+periodogram(x19,rectwin(length(x19)),length(x19),Fs)
 title('Periodogram Using FFT Dorsi C3 (up)')
-mxerr(19,:) = max(psdx'-periodogram(Dorsiflexion.C3,rectwin(length(Dorsiflexion.C3)),length(Dorsiflexion.C3),Fs));
+mxerr(19,:) = max(psdx'-periodogram(x19,rectwin(length(x19)),length(x19),Fs));
 psdxSum_Dorsi3 = sum(10*log10(psdx));
 
-%x20 = DorsiflexionC4;
-N = length(Dorsiflexion.C4);
-xdft = fft(Dorsiflexion.C4);
+x20 = DorsiflexionC4;
+N = length(x20);
+xdft = fft(x20);
 xdft = xdft(1:N/2+1);
 psdx = (1/(Fs*N)) * abs(xdft).^2;
 psdx(2:end-1) = 2*psdx(2:end-1);
-freq2 = 0:Fs/length(Dorsiflexion.C4):Fs/2;
+freq2 = 0:Fs/length(x20):Fs/2;
 subplot(2,2,4);
 plot(freq2,10*log10(psdx))
 grid on
 title('Periodogram Using FFT Dorsi C4 (up)')
 xlabel('Frequency (Hz)')
 ylabel('Power/Frequency (dB/Hz)')
-periodogram(Dorsiflexion.C4,rectwin(length(Dorsiflexion.C4)),length(Dorsiflexion.C4),Fs)
+periodogram(x20,rectwin(length(x20)),length(x20),Fs)
 title('Periodogram Using FFT Dorsi C4 (up)')
-mxerr(20,:) = max(psdx'-periodogram(Dorsiflexion.C4,rectwin(length(Dorsiflexion.C4)),length(Dorsiflexion.C4),Fs));
+mxerr(20,:) = max(psdx'-periodogram(x20,rectwin(length(x20)),length(x20),Fs));
 psdxSum_Dorsi4 = sum(10*log10(psdx));
 end
 
