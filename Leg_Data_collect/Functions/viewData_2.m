@@ -8,7 +8,7 @@ set(0, 'DefaultFigureWindowStyle','docked');
 numSamples = 200;
 numClasses = 5;
 figureNum = 1;
-[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
+%[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
 load('AutoLegData.mat');
 
 
@@ -18,13 +18,13 @@ LastPlot = 40;
 figureNum = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstPlot, LastPlot, figureNum);
 
 %% Wavelets
-NumWaveletSamples = 5;
-[kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
-    wavelets(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, NumWaveletSamples, figureNum);
+NumWaveletSamples = 5;  %Higher the number the longer it takes, plan about 30 sec per sample. 
+% [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
+%     wavelets(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, NumWaveletSamples, figureNum);
 
 %% Calculate FFT's
 
-%CalculateFFT();
+CalculateFFT();
 
 %% Power Spectral Density
 
