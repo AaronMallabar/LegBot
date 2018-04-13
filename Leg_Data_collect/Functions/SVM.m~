@@ -96,31 +96,31 @@ data5 = [Rest1_Max', Rest4_Max'];
 % data5 = data5(21:40, :);
 
 %% Extract Feature: Sums
-% kickOutC1_sum = sum(abs(kickOut.C1))/100;
-% kickOutC2_sum = sum(abs(kickOut.C2))/100;
-% kickOutC3_sum = sum(abs(kickOut.C3))/100;
-% kickOutC4_sum = sum(abs(kickOut.C4))/100;
-% kickInC1_sum = sum(abs(kickIn.C1))/100;
-% kickInC2_sum = sum(abs(kickIn.C2))/100;
-% kickInC3_sum = sum(abs(kickIn.C3))/100;
-% kickInC4_sum = sum(abs(kickIn.C4))/100;
-% DorsiflexionC1_sum = sum(abs(Dorsiflexion.C1))/100;
-% DorsiflexionC2_sum = sum(abs(Dorsiflexion.C2))/100;
-% DorsiflexionC3_sum = sum(abs(Dorsiflexion.C3))/100;
-% DorsiflexionC4_sum = sum(abs(Dorsiflexion.C4))/100;
-% PlantarflexionC1_sum = sum(abs(Plantarflexion.C1))/100;
-% PlantarflexionC2_sum = sum(abs(Plantarflexion.C2))/100;
-% PlantarflexionC3_sum = sum(abs(Plantarflexion.C3))/100;
-% PlantarflexionC4_sum = sum(abs(Plantarflexion.C4))/100;
-% Rest1_sum = sum(abs(Rest.C1))/100;
-% Rest2_sum = sum(abs(Rest.C2))/100;
-% Rest3_sum = sum(abs(Rest.C3))/100;
-% Rest4_sum = sum(abs(Rest.C4))/100;
-% data1 = [kickOutC3_sum',kickOutC4_sum'];
-% data2 = [kickInC3_sum',kickInC4_sum'];
-% data3 = [DorsiflexionC3_sum',DorsiflexionC4_sum'];
-% data4 = [PlantarflexionC3_sum',PlantarflexionC4_sum'];
-% data5 = [Rest3_sum', Rest4_sum'];
+kickOutC1_sum = sum(abs(kickOut.C1))/100;
+kickOutC2_sum = sum(abs(kickOut.C2))/100;
+kickOutC3_sum = sum(abs(kickOut.C3))/100;
+kickOutC4_sum = sum(abs(kickOut.C4))/100;
+kickInC1_sum = sum(abs(kickIn.C1))/100;
+kickInC2_sum = sum(abs(kickIn.C2))/100;
+kickInC3_sum = sum(abs(kickIn.C3))/100;
+kickInC4_sum = sum(abs(kickIn.C4))/100;
+DorsiflexionC1_sum = sum(abs(Dorsiflexion.C1))/100;
+DorsiflexionC2_sum = sum(abs(Dorsiflexion.C2))/100;
+DorsiflexionC3_sum = sum(abs(Dorsiflexion.C3))/100;
+DorsiflexionC4_sum = sum(abs(Dorsiflexion.C4))/100;
+PlantarflexionC1_sum = sum(abs(Plantarflexion.C1))/100;
+PlantarflexionC2_sum = sum(abs(Plantarflexion.C2))/100;
+PlantarflexionC3_sum = sum(abs(Plantarflexion.C3))/100;
+PlantarflexionC4_sum = sum(abs(Plantarflexion.C4))/100;
+Rest1_sum = sum(abs(Rest.C1))/100;
+Rest2_sum = sum(abs(Rest.C2))/100;
+Rest3_sum = sum(abs(Rest.C3))/100;
+Rest4_sum = sum(abs(Rest.C4))/100;
+data1 = [kickOutC3_sum',kickOutC4_sum'];
+data2 = [kickInC3_sum',kickInC4_sum'];
+data3 = [DorsiflexionC3_sum',DorsiflexionC4_sum'];
+data4 = [PlantarflexionC3_sum',PlantarflexionC4_sum'];
+data5 = [Rest3_sum', Rest4_sum'];
 
 %% SVM Classification
 dataAll = [data1;data2;data3;data4;data5]; %Combine all the data
@@ -213,7 +213,7 @@ predictedlabels = predictedlabels';
 
 %[0 0 1; 0 1 0; 1 0 0; 1 0 1; .5 .1 1 ]
 
-figure(figureNum); figureNum = figureNum+1;
+figure(22);
 h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
 hold on
 h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
