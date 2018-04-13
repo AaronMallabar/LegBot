@@ -84,7 +84,7 @@ for i = 1:NumSamples
     title('Level 1 Detail Coefficients')
     hold on;
     
-    %%kickIn Channel 4
+    %%kickIn Channel 3
     [kickInWaveC4(:,i),l(:,i)] = wavedec(kickIn.C4(:,i),3,'db2');
     KickInapproxC4(:,i) = appcoef(kickInWaveC4(:,i),l(:,i),'db2');
     [KickIn.WaveletCoeffC4L1(:,i),KickIn.WaveletCoeffC4L2(:,i),KickIn.WaveletCoeffC4L3(:,i)] ...
@@ -113,6 +113,7 @@ for i = 1:NumSamples
     
    %% kickOut 
    %Channel 1
+    figureNum = figureNumIn;
     [kickOutWaveC1(:,i),l(:,i)] = wavedec(kickOut.C1(:,i),3,'db2');
     kickOutapproxC1(:,i) = appcoef(kickOutWaveC1(:,i),l(:,i),'db2');
     [kickOut.WaveletCoeffC1L1(:,i),kickOut.WaveletCoeffC1L2(:,i),kickOut.WaveletCoeffC1L3(:,i)] ...

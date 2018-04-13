@@ -7,28 +7,30 @@ set(0, 'DefaultFigureWindowStyle','docked');
 %global variabls:
 numSamples = 200;
 numClasses = 5;
-%[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
+figureNum = 1;
+[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
 load('AutoLegData.mat');
 
 
 %% Plotting Raw Data
 FirstPlot = 1;
 LastPlot = 40;
-plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstPlot, LastPlot);
+figureNum = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstPlot, LastPlot, figureNum);
 
 %% Wavelets
-
-wavelets();
+NumWaveletSamples = 5;
+[kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
+    wavelets(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, NumWaveletSamples, figureNum);
 
 %% Calculate FFT's
 
-CalculateFFT();
+%CalculateFFT();
 
 %% Power Spectral Density
 
-PSD();
+%PSD();
 
 %% SVM
 
-SVM();
-SVM3();
+%SVM();
+%SVM3();

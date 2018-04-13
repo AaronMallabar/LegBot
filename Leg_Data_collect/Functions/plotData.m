@@ -1,9 +1,9 @@
-function [] = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, first, last)
+function [figureNum] = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, first, last, figureNum)
 
 %% Kick Out
 ymin = -2;
 ymax = 2;
-figure(1);
+figure(figureNum); figureNum = figureNum + 1;
 subplot(2,2,1);
 plot(kickOut.C1(:,first:last));
 title('Kick Out: Channel 1');
@@ -24,7 +24,7 @@ ylim([ymin ymax]);
 %% Kick IN
 ymin = -2;
 ymax = 2;
-figure(2);
+figure(figureNum); figureNum = figureNum + 1;
 subplot(2,2,1);
 plot(kickIn.C1(:,first:last));
 title('Kick In: Channel 1');
@@ -45,7 +45,7 @@ ylim([ymin ymax]);
 %% Dorsiflexion
 ymin = -2;
 ymax = 2;
-figure(3);
+figure(figureNum); figureNum = figureNum + 1;
 subplot(2,2,1);
 plot(Dorsiflexion.C1(:,first:last));
 title('Ankle Dorsiflexion: Channel 1');
@@ -66,7 +66,7 @@ ylim([ymin ymax]);
 %% Plantarflexion
 ymin = -2;
 ymax = 2;
-figure(4);
+figure(figureNum); figureNum = figureNum + 1;
 subplot(2,2,1);
 plot(Plantarflexion.C1(:,first:last));
 title('Ankle Plantarflexion: Channel 1');
@@ -87,7 +87,7 @@ ylim([ymin ymax]);
 %% Resting
 ymin = -2;
 ymax = 2;
-figure(5);
+figure(figureNum); figureNum = figureNum + 1;
 subplot(2,2,1);
 plot(Rest.C1(:,first:last));
 title('Resting: Channel 1');
