@@ -1,4 +1,4 @@
-function [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum]...
+function [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, All_Max]...
             = SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
 
 %% Extract Feature: Range
@@ -30,6 +30,7 @@ data2 = [kickInC1_Max',kickInC4_Max'];
 data3 = [DorsiflexionC1_Max',DorsiflexionC4_Max'];
 data4 = [PlantarflexionC1_Max',PlantarflexionC4_Max'];
 data5 = [Rest1_Max', Rest4_Max'];
+
 
 % Find Minimums
 % kickOutC1_Min = min(kickOut.C1);
@@ -128,18 +129,25 @@ dataAll = [data1;data2;data3;data4;data5]; %Combine all the data
 for i=1:numSamples
     if i <= numSamples/numClasses
         labels(i) = {'kickOut'};
+        labelnum(i) = 1;
     elseif i <= (numSamples/numClasses)*2
         labels(i) = {'kickIn'};
+        labelnum(i) = 2;
     elseif i <= (numSamples/numClasses)*3
         labels(i) = {'dorsiflexion'};
+        labelnum(i) = 3;
     elseif i <= (numSamples/numClasses)*4
         labels(i) = {'Plantarflexion'};
+        labelnum(i) = 4;
     else
         labels(i) = {'Rest'};
+        labelnum(i) = 5;
     end       
 end    
 
 labels = labels';%Flip 
+labelnum = labelnum'
+All_Max(:,5) = labelnum;
 
 figure(figureNum); figureNum = figureNum+1; %Figure of scatter plot before training
 gscatter(dataAll(:,1),dataAll(:,2),labels); %Scatter plot raw features
@@ -231,8 +239,8 @@ knownGroups = labels;
 PredictedGroups =  predictedlabels;
 
 [C,order] = confusionmat(knownGroups,PredictedGroups,'Order',{'kickOut','kickIn','dorsiflexion','Plantarflexion','Rest'})
-Cpercent = (C/20)*100
-figure(23);
+Cpercent = (C/(numSamples/numClasses))*100
+
 
 train = zeros(5, 100);
 predicted = zeros(5, 100);
@@ -273,7 +281,6 @@ for i=1:numSamples
 end    
 
 plotconfusion(train,predicted);
-
 
 end
 
