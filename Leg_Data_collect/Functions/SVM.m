@@ -1,6 +1,7 @@
-function [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, All_Max]...
+function []...
             = SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
-
+numTrainingData = numSamples/2;
+numTestData = numSamples-numTrainingData;
 %% Extract Feature: Range
 %Find Maximums
 kickOutC1_Max = max(kickOut.C1);
@@ -25,12 +26,17 @@ Rest3_Max = max(Rest.C3);
 Rest4_Max = max(Rest.C4);
 
 %Choose features to use in SVM, channels 1 and 4, and combine
-data1 = [kickOutC1_Max',kickOutC4_Max'];
-data2 = [kickInC1_Max',kickInC4_Max'];
-data3 = [DorsiflexionC1_Max',DorsiflexionC4_Max'];
-data4 = [PlantarflexionC1_Max',PlantarflexionC4_Max'];
-data5 = [Rest1_Max', Rest4_Max'];
+Trainingdata1 = [kickOutC1_Max(1:numTrainingData/numClasses)',kickOutC4_Max(1:numTrainingData/numClasses)'];
+Trainingdata2 = [kickInC1_Max(1:numTrainingData/numClasses)',kickInC4_Max(1:numTrainingData/numClasses)'];
+Trainingdata3 = [DorsiflexionC1_Max(1:numTrainingData/numClasses)',DorsiflexionC4_Max(1:numTrainingData/numClasses)'];
+Trainingdata4 = [PlantarflexionC1_Max(1:numTrainingData/numClasses)',PlantarflexionC4_Max(1:numTrainingData/numClasses)'];
+Trainingdata5 = [Rest1_Max(1:numTrainingData/numClasses)', Rest4_Max(1:numTrainingData/numClasses)'];
 
+Testdata1 = [kickOutC1_Max(numTrainingData/numClasses+1:end)',kickOutC4_Max(numTrainingData/numClasses+1:end)'];
+Testdata2 = [kickInC1_Max(numTrainingData/numClasses+1:end)',kickInC4_Max(numTrainingData/numClasses+1:end)'];
+Testdata3 = [DorsiflexionC1_Max(numTrainingData/numClasses+1:end)',DorsiflexionC4_Max(numTrainingData/numClasses+1:end)'];
+Testdata4 = [PlantarflexionC1_Max(numTrainingData/numClasses+1:end)',PlantarflexionC4_Max(numTrainingData/numClasses+1:end)'];
+Testdata5 = [Rest1_Max(numTrainingData/numClasses+1:end)', Rest4_Max(numTrainingData/numClasses+1:end)'];
 
 % Find Minimums
 % kickOutC1_Min = min(kickOut.C1);
@@ -124,19 +130,20 @@ data5 = [Rest1_Max', Rest4_Max'];
 % data5 = [Rest3_sum', Rest4_sum'];
 
 %% SVM Classification
-dataAll = [data1;data2;data3;data4;data5]; %Combine all the data
+TrainingdataAll = [Trainingdata1;Trainingdata2;Trainingdata3;Trainingdata4;Trainingdata5];
+TestdataAll = [Testdata1;Testdata2;Testdata3;Testdata4;Testdata5];%Combine all the data
 %For each sample, give it the corresponding label (Data is in order)
-for i=1:numSamples
-    if i <= numSamples/numClasses
+for i=1:numTrainingData
+    if i <= numTrainingData/numClasses
         labels(i) = {'kickOut'};
         labelnum(i) = 1;
-    elseif i <= (numSamples/numClasses)*2
+    elseif i <= (numTrainingData/numClasses)*2
         labels(i) = {'kickIn'};
         labelnum(i) = 2;
-    elseif i <= (numSamples/numClasses)*3
+    elseif i <= (numTrainingData/numClasses)*3
         labels(i) = {'dorsiflexion'};
         labelnum(i) = 3;
-    elseif i <= (numSamples/numClasses)*4
+    elseif i <= (numTrainingData/numClasses)*4
         labels(i) = {'Plantarflexion'};
         labelnum(i) = 4;
     else
@@ -145,12 +152,12 @@ for i=1:numSamples
     end       
 end    
 
-labels = labels';%Flip 
-labelnum = labelnum'
-All_Max(:,5) = labelnum;
+Trainedlabels = labels';%Flip 
+Trainedlabelnum = labelnum';
+TrainingdataAll(:,5) = labelnum;
 
 figure(figureNum); figureNum = figureNum+1; %Figure of scatter plot before training
-gscatter(dataAll(:,1),dataAll(:,2),labels); %Scatter plot raw features
+gscatter(TrainingdataAll(:,1),TrainingdataAll(:,2),Trainedlabels); %Scatter plot raw features
 h = gca; %get current axis
 lims = [h.XLim h.YLim]; % Extract the x and y axis limits
 title('Leg Movement');
@@ -160,20 +167,20 @@ legend('Location','Northwest');
 
 SVMModels = cell(5,1); %Creates empty models
 classes = unique(labels); %Array of labels representing the classes
-rng(1); % For reproducibility
+
 
 %Create the 5 SVM models (One for each class)
 for j = 1:numClasses
     indx = strcmp(labels,classes(j)); % Create binary classes for each classifier
-    SVMModels{j} = fitcsvm(dataAll,indx,'ClassNames',[false true],'Standardize',true,...
+    SVMModels{j} = fitcsvm(TrainingdataAll(:,1:2),indx,'ClassNames',[false true],'Standardize',true,...
         'KernelFunction','rbf','BoxConstraint',1); 
 end
 
 %scatter plot resolution (Setup for scatter plot)%
 %d = 0.002; 
 d = .02; %.02 is the largest this can be because it must be smaller than the smallest Range. 
-[x1Grid,x2Grid] = meshgrid(min(dataAll(:,1)):d:max(dataAll(:,1)),...
-    min(dataAll(:,2)):d:max(dataAll(:,2)));
+[x1Grid,x2Grid] = meshgrid(min(TrainingdataAll(:,1)):d:max(TrainingdataAll(:,1)),...
+    min(TrainingdataAll(:,2)):d:max(TrainingdataAll(:,2)));
 xGrid = [x1Grid(:),x2Grid(:)];
 N = size(xGrid,1);
 Scores = zeros(N,numClasses);
@@ -192,9 +199,9 @@ end
 
 %For loop iterates each sample
 %and decides which class each point should be. 
-for i = 1:numSamples
-  Xindex = floor(dataAll(i,2)/d);
-  Yindex = floor(dataAll(i,1)/d);
+for i = 1:numTestData
+  Xindex = floor(TestdataAll(i,2)/d);
+  Yindex = floor(TestdataAll(i,1)/d);
   
   if Xindex >= rowSize
       Xindex = rowSize;
@@ -218,47 +225,44 @@ for i = 1:numSamples
 end
 
 predictedlabels = predictedlabels';
-
-%[0 0 1; 0 1 0; 1 0 0; 1 0 1; .5 .1 1 ]
-
 figure(figureNum); figureNum = figureNum+1;
 h(1:5) = gscatter(xGrid(:,1),xGrid(:,2),maxScore,'bmgyr'); %plots the regions
 hold on
-h(6:10) = gscatter(dataAll(:,1),dataAll(:,2),labels); %plots the points inside the regions
+h(6:10) = gscatter(TestdataAll(:,1),TestdataAll(:,2),labels'); %plots the points inside the regions
 title('{\bf Leg movement Classification regions}');
 xlabel('Channel 1');
-ylabel('Channel 4');
+ylabel('Channel 2');
 legend(h,{'Plantarflexion Region','Rest region','Dorsiflexion Region','KickOut Region','kickIn Region',  ...
     'Observed KickIn','Observed kickOut','Observed Dorsiflexion', 'Observed Plantarflexion', 'Observed Rest '},...
     'Location','Northwest');
 axis tight
 hold off
 
-dataAllinfo = table(dataAll(:,1), dataAll(:,2), labels, predictedlabels);
+TestdataAllinfo = table(TestdataAll(:,1), TestdataAll(:,2), labels', predictedlabels);
 knownGroups = labels;
 PredictedGroups =  predictedlabels;
 
 [C,order] = confusionmat(knownGroups,PredictedGroups,'Order',{'kickOut','kickIn','dorsiflexion','Plantarflexion','Rest'})
-Cpercent = (C/(numSamples/numClasses))*100
+Cpercent = (C/(numTestData/numClasses))*100
 
 
 train = zeros(5, 100);
 predicted = zeros(5, 100);
 
-for i=1:numSamples
-    if i <= (numSamples/numClasses)*1
+for i=1:numTrainingData
+    if i <= (numTrainingData/numClasses)*1
         train(1,i) = 1;
-    elseif i <= (numSamples/numClasses)*2
+    elseif i <= (numTrainingData/numClasses)*2
         train(2,i) = 1;
-    elseif i <= (numSamples/numClasses)*3
+    elseif i <= (numTrainingData/numClasses)*3
         train(3,i) = 1;
-    elseif i <= (numSamples/numClasses)*4
+    elseif i <= (numTrainingData/numClasses)*4
         train(4,i) = 1;
     else
         train(5,i) = 1;
     end
-  Xindex = floor(dataAll(i,2)/d);
-  Yindex = floor(dataAll(i,1)/d);
+  Xindex = floor(TrainingdataAll(i,2)/d);
+  Yindex = floor(TrainingdataAll(i,1)/d);
   if Xindex >= rowSize
       Xindex = rowSize;
   end

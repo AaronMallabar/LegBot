@@ -34,8 +34,7 @@ LastPlot = 40;
 
 %% SVM
 
-% [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum, CombinedData] = ...
-%     SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
+SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
 SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
 
 %SVM3();
