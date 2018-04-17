@@ -8,14 +8,14 @@ set(0, 'DefaultFigureWindowStyle','docked');
 numSamples = 100;
 numClasses = 5;
 figureNum = 1;
-[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
+%[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
 load('AutoLegData.mat');
 
 
 %% Plotting Raw Data
-FirstPlot = 1;
-LastPlot = 20;
-figureNum = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstPlot, LastPlot, figureNum);
+% FirstPlot = 1;
+% LastPlot = 20;
+% figureNum = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstPlot, LastPlot, figureNum);
 
 % %% Wavelets
 %   NumWaveletSamples = 1;  %Higher the number the longer it takes, plan about 30 sec per sample. 
@@ -35,6 +35,6 @@ figureNum = plotData(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, FirstP
 %% SVM
 
 %SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
-Xv= SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
+Accuracy = SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
 
 %SVM3();

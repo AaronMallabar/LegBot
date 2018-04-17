@@ -1,8 +1,9 @@
-function [AllData_max] = ...
+function [TotalAccuracy] = ...
     SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
 %UNTITLED2 Summary of this function goes here
 %Find Maximums
 numTrainSamples = 50;
+numTestData = numSamples-numTrainSamples;
 
 kickOut.C1_Max = max(kickOut.C1);
 kickOut.C2_Max = max(kickOut.C2);
@@ -54,39 +55,45 @@ for i=1:numSamples
 end    
 
 AllData_max(:,5) = All_labelnum;
+AllData_max_random = AllData_max(randperm(size(AllData_max,1)),:);
 
-labelnum(1:(numTrainSamples/5),1) = 1;
-labelnum((numTrainSamples/5)+1:2*(numTrainSamples/5),1) = 2;
-labelnum(2*(numTrainSamples/5)+1:3*(numTrainSamples/5),1) = 3;
-labelnum(3*(numTrainSamples/5)+1:4*(numTrainSamples/5),1) = 4;
-labelnum(4*(numTrainSamples/5)+1:5*(numTrainSamples/5),1) = 5;
+% labelnum(1:(numTrainSamples/5),1) = 1;
+% labelnum((numTrainSamples/5)+1:2*(numTrainSamples/5),1) = 2;
+% labelnum(2*(numTrainSamples/5)+1:3*(numTrainSamples/5),1) = 3;
+% labelnum(3*(numTrainSamples/5)+1:4*(numTrainSamples/5),1) = 4;
+% labelnum(4*(numTrainSamples/5)+1:5*(numTrainSamples/5),1) = 5;
 
 
 %labels = labels';%Flip 
 %labelnum = labelnum';
-Training_Max = zeros(numTrainSamples,5);
-Training_Max = [kickOut.Max(1:(numTrainSamples/5),:);...
-                kickIn.Max(1:(numTrainSamples/5),:);...
-                Dorsiflexion.Max(1:(numTrainSamples/5),:);...
-                Plantarflexion.Max(1:(numTrainSamples/5),:);...
-                Rest.Max(1:(numTrainSamples/5),:)];
-            
-Training_Max(:,5) = labelnum;
+% Training_Max = zeros(numTrainSamples,5);
+% Training_Max = [kickOut.Max(1:(numTrainSamples/5),:);...
+%                 kickIn.Max(1:(numTrainSamples/5),:);...
+%                 Dorsiflexion.Max(1:(numTrainSamples/5),:);...
+%                 Plantarflexion.Max(1:(numTrainSamples/5),:);...
+%                 Rest.Max(1:(numTrainSamples/5),:)];
+%             
+% Training_Max(:,5) = labelnum;
+Training_Max = AllData_max_random(1:numTrainSamples,:);
+
 Interval = (numSamples/5) - (numTrainSamples/5);
 
-Testing_Max = [kickOut.Max(1+(numTrainSamples/5):(numSamples/5),:);...
-               kickIn.Max(1+(numTrainSamples/5):(numSamples/5),:);...
-               Dorsiflexion.Max(1+(numTrainSamples/5):(numSamples/5),:);...
-               Plantarflexion.Max(1+(numTrainSamples/5):(numSamples/5),:);...
-               Rest.Max(1+(numTrainSamples/5):(numSamples/5),:)];
+% Testing_Max = [kickOut.Max(1+(numTrainSamples/5):(numSamples/5),:);...
+%                kickIn.Max(1+(numTrainSamples/5):(numSamples/5),:);...
+%                Dorsiflexion.Max(1+(numTrainSamples/5):(numSamples/5),:);...
+%                Plantarflexion.Max(1+(numTrainSamples/5):(numSamples/5),:);...
+%                Rest.Max(1+(numTrainSamples/5):(numSamples/5),:)];
+
+Testing_Max = AllData_max_random(numTrainSamples+1:end, 1:4);
            
 
                 
-known(1:Interval,1) = 1;
-known(Interval+1:2*Interval,1) = 2;
-known(2*Interval+1:3*Interval,1) = 3;
-known(3*Interval+1:4*Interval,1) = 4;
-known(4*Interval+1:5*Interval,1) = 5;
+% known(1:Interval,1) = 1;
+% known(Interval+1:2*Interval,1) = 2;
+% known(2*Interval+1:3*Interval,1) = 3;
+% known(3*Interval+1:4*Interval,1) = 4;
+% known(4*Interval+1:5*Interval,1) = 5;
+known = AllData_max_random(numTrainSamples+1:end, 5);
 
 [trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer(Training_Max);
 for i=1:length(Testing_Max(:,1))
@@ -96,6 +103,12 @@ end
 
 C = confusionmat(known,prediction')
 Cpercent = (C/((numSamples-numTrainSamples)/numClasses))*100
+
+TotalAccuracy = 0;
+for i=1:numClasses
+    TotalAccuracy = TotalAccuracy + C(i,i);
+end
+TotalAccuracy = TotalAccuracy / numTrainSamples
 
 end
 
