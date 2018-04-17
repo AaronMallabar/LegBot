@@ -35,6 +35,6 @@ load('AutoLegData.mat');
 %% SVM
 
 %SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
-Accuracy = SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
+Xv= SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
 
 %SVM3();
