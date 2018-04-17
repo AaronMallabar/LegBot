@@ -2,7 +2,7 @@ function [AllData_max] = ...
     SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
 %UNTITLED2 Summary of this function goes here
 %Find Maximums
-numTrainSamples = 50;
+numTrainSamples = 0;
 
 kickOut.C1_Max = max(kickOut.C1);
 kickOut.C2_Max = max(kickOut.C2);
