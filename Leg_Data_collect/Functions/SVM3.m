@@ -1,54 +1,58 @@
-function [] = SVM3()
-kickOutC1_Max = max(kickOutC1);
-kickOutC2_Max = max(kickOutC2);
-kickOutC3_Max = max(kickOutC3);
-kickOutC4_Max = max(kickOutC4);
+function [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum]...
+    = SVM3(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
+
+%restoredefaultpath; matlabrc
+
+kickOutC1_Max = max(kickOut.C1);
+kickOutC2_Max = max(kickOut.C2);
+kickOutC3_Max = max(kickOut.C3);
+kickOutC4_Max = max(kickOut.C4);
 
 
-kickInC1_Max = max(kickInC1);
-kickInC2_Max = max(kickInC2);
-kickInC3_Max = max(kickInC3);
-kickInC4_Max = max(kickInC4);
+kickInC1_Max = max(kickIn.C1);
+kickInC2_Max = max(kickIn.C2);
+kickInC3_Max = max(kickIn.C3);
+kickInC4_Max = max(kickIn.C4);
 
-DorsiflexionC1_Max = max(DorsiflexionC1);
-DorsiflexionC2_Max = max(DorsiflexionC2);
-DorsiflexionC3_Max = max(DorsiflexionC3);
-DorsiflexionC4_Max = max(DorsiflexionC4);
+DorsiflexionC1_Max = max(Dorsiflexion.C1);
+DorsiflexionC2_Max = max(Dorsiflexion.C2);
+DorsiflexionC3_Max = max(Dorsiflexion.C3);
+DorsiflexionC4_Max = max(Dorsiflexion.C4);
 
-PlantarflexionC1_Max = max(PlantarflexionC1);
-PlantarflexionC2_Max = max(PlantarflexionC2);
-PlantarflexionC3_Max = max(PlantarflexionC3);
-PlantarflexionC4_Max = max(PlantarflexionC4);
+PlantarflexionC1_Max = max(Plantarflexion.C1);
+PlantarflexionC2_Max = max(Plantarflexion.C2);
+PlantarflexionC3_Max = max(Plantarflexion.C3);
+PlantarflexionC4_Max = max(Plantarflexion.C4);
 
-Rest1_Max = max(Rest1);
-Rest2_Max = max(Rest2);
-Rest3_Max = max(Rest3);
-Rest4_Max = max(Rest4);
+Rest1_Max = max(Rest.C1);
+Rest2_Max = max(Rest.C2);
+Rest3_Max = max(Rest.C3);
+Rest4_Max = max(Rest.C4);
 
-kickOutC1_Min = min(kickOutC1);
-kickOutC2_Min = min(kickOutC2);
-kickOutC3_Min = min(kickOutC3);
-kickOutC4_Min = min(kickOutC4);
+kickOutC1_Min = min(kickOut.C1);
+kickOutC2_Min = min(kickOut.C2);
+kickOutC3_Min = min(kickOut.C3);
+kickOutC4_Min = min(kickOut.C4);
 
-kickInC1_Min = min(kickInC1);
-kickInC2_Min = min(kickInC2);
-kickInC3_Min = min(kickInC3);
-kickInC4_Min = min(kickInC4);
+kickInC1_Min = min(kickIn.C1);
+kickInC2_Min = min(kickIn.C2);
+kickInC3_Min = min(kickIn.C3);
+kickInC4_Min = min(kickIn.C4);
 
-DorsiflexionC1_Min = min(DorsiflexionC1);
-DorsiflexionC2_Min = min(DorsiflexionC2);
-DorsiflexionC3_Min = min(DorsiflexionC3);
-DorsiflexionC4_Min = min(DorsiflexionC4);
+DorsiflexionC1_Min = min(Dorsiflexion.C1);
+DorsiflexionC2_Min = min(Dorsiflexion.C2);
+DorsiflexionC3_Min = min(Dorsiflexion.C3);
+DorsiflexionC4_Min = min(Dorsiflexion.C4);
 
-PlantarflexionC1_Min = min(PlantarflexionC1);
-PlantarflexionC2_Min = min(PlantarflexionC2);
-PlantarflexionC3_Min = min(PlantarflexionC3);
-PlantarflexionC4_Min = min(PlantarflexionC4);
+PlantarflexionC1_Min = min(Plantarflexion.C1);
+PlantarflexionC2_Min = min(Plantarflexion.C2);
+PlantarflexionC3_Min = min(Plantarflexion.C3);
+PlantarflexionC4_Min = min(Plantarflexion.C4);
 
-Rest1_min = min(Rest1);
-Rest2_min = min(Rest2);
-Rest3_min = min(Rest3);
-Rest4_min = min(Rest4);
+Rest1_min = min(Rest.C1);
+Rest2_min = min(Rest.C2);
+Rest3_min = min(Rest.C3);
+Rest4_min = min(Rest.C4);
 
 kickOutC1_Range = kickOutC1_Max - kickOutC1_Min;
 kickOutC2_Range = kickOutC2_Max - kickOutC2_Min;
@@ -76,31 +80,31 @@ Rest3_Range = Rest3_Max - Rest3_min;
 Rest4_Range = Rest4_Max - Rest4_min;
 
 %%sums%%
-kickOutC1_sum = sum(abs(kickOutC1))/10;
-kickOutC2_sum = sum(abs(kickOutC2))/10;
-kickOutC3_sum = sum(abs(kickOutC3))/10;
-kickOutC4_sum = sum(abs(kickOutC4))/10;
+kickOutC1_sum = sum(abs(kickOut.C1))/10;
+kickOutC2_sum = sum(abs(kickOut.C2))/10;
+kickOutC3_sum = sum(abs(kickOut.C3))/10;
+kickOutC4_sum = sum(abs(kickOut.C4))/10;
 
 
-kickInC1_sum = sum(abs(kickInC1))/10;
-kickInC2_sum = sum(abs(kickInC2))/10;
-kickInC3_sum = sum(abs(kickInC3))/10;
-kickInC4_sum = sum(abs(kickInC4))/10;
+kickInC1_sum = sum(abs(kickIn.C1))/10;
+kickInC2_sum = sum(abs(kickIn.C2))/10;
+kickInC3_sum = sum(abs(kickIn.C3))/10;
+kickInC4_sum = sum(abs(kickIn.C4))/10;
 
-DorsiflexionC1_sum = sum(abs(DorsiflexionC1))/10;
-DorsiflexionC2_sum = sum(abs(DorsiflexionC2))/10;
-DorsiflexionC3_sum = sum(abs(DorsiflexionC3))/10;
-DorsiflexionC4_sum = sum(abs(DorsiflexionC4))/10;
+DorsiflexionC1_sum = sum(abs(Dorsiflexion.C1))/10;
+DorsiflexionC2_sum = sum(abs(Dorsiflexion.C2))/10;
+DorsiflexionC3_sum = sum(abs(Dorsiflexion.C3))/10;
+DorsiflexionC4_sum = sum(abs(Dorsiflexion.C4))/10;
 
-PlantarflexionC1_sum = sum(abs(PlantarflexionC1))/10;
-PlantarflexionC2_sum = sum(abs(PlantarflexionC2))/10;
-PlantarflexionC3_sum = sum(abs(PlantarflexionC3))/10;
-PlantarflexionC4_sum = sum(abs(PlantarflexionC4))/10;
+PlantarflexionC1_sum = sum(abs(Plantarflexion.C1))/10;
+PlantarflexionC2_sum = sum(abs(Plantarflexion.C2))/10;
+PlantarflexionC3_sum = sum(abs(Plantarflexion.C3))/10;
+PlantarflexionC4_sum = sum(abs(Plantarflexion.C4))/10;
 
-Rest1_sum = sum(abs(Rest1))/10;
-Rest2_sum = sum(abs(Rest2))/10;
-Rest3_sum = sum(abs(Rest3))/10;
-Rest4_sum = sum(abs(Rest4))/10;
+Rest1_sum = sum(abs(Rest.C1))/10;
+Rest2_sum = sum(abs(Rest.C2))/10;
+Rest3_sum = sum(abs(Rest.C3))/10;
+Rest4_sum = sum(abs(Rest.C4))/10;
 
 
 data1 = [kickOutC1_Range',kickOutC4_Range',kickOutC1_sum'];
@@ -242,11 +246,11 @@ knownGroups = labels;
 PredictedGroups =  predictedlabels;
 
 [C,order] = confusionmat(knownGroups,PredictedGroups,'Order',{'kickOut','kickIn','dorsiflexion','Plantarflexion','Rest'})
-Cpercent = (C/20)*100
+Cpercent = (C/(numSamples/numClasses))*100
 figure(23);
 
-train = zeros(5, 100);
-predicted = zeros(5, 100);
+train = zeros(numClasses, numSamples);
+predicted = zeros(numClasses, numSamples);
 
 for i=1:numSamples
     if i <= (numSamples/numClasses)*1
@@ -286,7 +290,6 @@ for i=1:numSamples
   end
 end    
 
-plotconfusion(train,predicted);
+%plotconfusion(train',predicted');
 
 end
-
