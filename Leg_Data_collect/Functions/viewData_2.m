@@ -24,8 +24,8 @@ load('AutoLegData.mat');
 % 
 % %% Calculate FFT's
 % 
-%[kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
-%      CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum);
+[kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
+     CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum);
 % 
 % %% Power Spectral Density
 % 
