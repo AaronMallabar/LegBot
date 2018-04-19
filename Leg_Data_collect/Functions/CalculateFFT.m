@@ -30,6 +30,71 @@ Dorsiflexion.FFT_C2 = abs(fftshift(fft(Dorsiflexion.C2)))/Lt;
 Dorsiflexion.FFT_C3 = abs(fftshift(fft(Dorsiflexion.C3)))/Lt;
 Dorsiflexion.FFT_C4 = abs(fftshift(fft(Dorsiflexion.C4)))/Lt;
 
+%% Get sums from certain range
+
+minRange = 4500;
+maxRange = 5500;
+
+for i = 1:40
+    
+    Rest.FFT_C1_sum(i) = sum(Rest.FFT_C1(minRange:maxRange,i));
+    Rest.FFT_C2_sum(i) = sum(Rest.FFT_C2(minRange:maxRange,i));
+    Rest.FFT_C3_sum(i) = sum(Rest.FFT_C3(minRange:maxRange,i));
+    Rest.FFT_C4_sum(i) = sum(Rest.FFT_C4(minRange:maxRange,i));
+    
+    kickIn.FFT_C1_sum(i) = sum(kickIn.FFT_C1(minRange:maxRange,i));
+    kickIn.FFT_C2_sum(i) = sum(kickIn.FFT_C2(minRange:maxRange,i));
+    kickIn.FFT_C3_sum(i) = sum(kickIn.FFT_C3(minRange:maxRange,i));
+    kickIn.FFT_C4_sum(i) = sum(kickIn.FFT_C4(minRange:maxRange,i));
+    
+    kickOut.FFT_C1_sum(i) = sum(kickOut.FFT_C1(minRange:maxRange,i));
+    kickOut.FFT_C2_sum(i) = sum(kickOut.FFT_C2(minRange:maxRange,i));
+    kickOut.FFT_C3_sum(i) = sum(kickOut.FFT_C3(minRange:maxRange,i));
+    kickOut.FFT_C4_sum(i) = sum(kickOut.FFT_C4(minRange:maxRange,i));
+    
+    Plantarflexion.FFT_C1_sum(i) = sum(Plantarflexion.FFT_C1(minRange:maxRange,i));
+    Plantarflexion.FFT_C2_sum(i) = sum(Plantarflexion.FFT_C2(minRange:maxRange,i));
+    Plantarflexion.FFT_C3_sum(i) = sum(Plantarflexion.FFT_C3(minRange:maxRange,i));
+    Plantarflexion.FFT_C4_sum(i) = sum(Plantarflexion.FFT_C4(minRange:maxRange,i));
+    
+    Dorsiflexion.FFT_C1_sum(i) = sum(Dorsiflexion.FFT_C1(minRange:maxRange,i));
+    Dorsiflexion.FFT_C2_sum(i) = sum(Dorsiflexion.FFT_C2(minRange:maxRange,i));
+    Dorsiflexion.FFT_C3_sum(i) = sum(Dorsiflexion.FFT_C3(minRange:maxRange,i));
+    Dorsiflexion.FFT_C4_sum(i) = sum(Dorsiflexion.FFT_C4(minRange:maxRange,i));
+    
+end
+
+%% get mean frequency (MNF)
+
+for i = 1:40
+    Rest.FFT_C1_MNF(i) = sum(Rest.FFT_C1(:,i).*f(:))./sum(Rest.FFT_C1(:,i));
+    Rest.FFT_C2_MNF(i) = sum(Rest.FFT_C2(:,i).*f(:))./sum(Rest.FFT_C2(:,i));
+    Rest.FFT_C3_MNF(i) = sum(Rest.FFT_C3(:,i).*f(:))./sum(Rest.FFT_C3(:,i));
+    Rest.FFT_C4_MNF(i) = sum(Rest.FFT_C4(:,i).*f(:))./sum(Rest.FFT_C4(:,i));
+    
+    kickIn.FFT_C1_MNF(i) = sum(kickIn.FFT_C1(:,i).*f(:))./sum(kickIn.FFT_C1(:,i));
+    kickIn.FFT_C2_MNF(i) = sum(kickIn.FFT_C2(:,i).*f(:))./sum(kickIn.FFT_C2(:,i));
+    kickIn.FFT_C3_MNF(i) = sum(kickIn.FFT_C3(:,i).*f(:))./sum(kickIn.FFT_C3(:,i));
+    kickIn.FFT_C4_MNF(i) = sum(kickIn.FFT_C4(:,i).*f(:))./sum(kickIn.FFT_C4(:,i));
+    
+    kickOut.FFT_C1_MNF(i) = sum(kickOut.FFT_C1(:,i).*f(:))./sum(kickOut.FFT_C1(:,i));
+    kickOut.FFT_C2_MNF(i) = sum(kickOut.FFT_C2(:,i).*f(:))./sum(kickOut.FFT_C2(:,i));
+    kickOut.FFT_C3_MNF(i) = sum(kickOut.FFT_C3(:,i).*f(:))./sum(kickOut.FFT_C3(:,i));
+    kickOut.FFT_C4_MNF(i) = sum(kickOut.FFT_C4(:,i).*f(:))./sum(kickOut.FFT_C4(:,i));
+    
+    Plantarflexion.FFT_C1_MNF(i) = sum(Plantarflexion.FFT_C1(:,i).*f(:))./sum(Plantarflexion.FFT_C1(:,i));
+    Plantarflexion.FFT_C2_MNF(i) = sum(Plantarflexion.FFT_C2(:,i).*f(:))./sum(Plantarflexion.FFT_C2(:,i));
+    Plantarflexion.FFT_C3_MNF(i) = sum(Plantarflexion.FFT_C3(:,i).*f(:))./sum(Plantarflexion.FFT_C3(:,i));
+    Plantarflexion.FFT_C4_MNF(i) = sum(Plantarflexion.FFT_C4(:,i).*f(:))./sum(Plantarflexion.FFT_C4(:,i));
+    
+    Dorsiflexion.FFT_C1_MNF(i) = sum(Dorsiflexion.FFT_C1(:,i).*f(:))./sum(Dorsiflexion.FFT_C1(:,i));
+    Dorsiflexion.FFT_C2_MNF(i) = sum(Dorsiflexion.FFT_C2(:,i).*f(:))./sum(Dorsiflexion.FFT_C2(:,i));
+    Dorsiflexion.FFT_C3_MNF(i) = sum(Dorsiflexion.FFT_C3(:,i).*f(:))./sum(Dorsiflexion.FFT_C3(:,i));
+    Dorsiflexion.FFT_C4_MNF(i) = sum(Dorsiflexion.FFT_C4(:,i).*f(:))./sum(Dorsiflexion.FFT_C4(:,i));
+end
+
+%% plot FFTs
+
 figure(figureNum); figureNum = figureNum+1;
 hold all
 subplot(4,1,1);
@@ -119,6 +184,152 @@ title('DorsiflexionC3');
 subplot(4,1,4);
 plot(f, Dorsiflexion.FFT_C4);
 axis([-200 200 , 0 .01])
+title('DorsiflexionC4');
+
+%%plot sums
+figure(figureNum); figureNum = figureNum+1;
+hold all
+subplot(4,1,1);
+plot(Rest.FFT_C1_sum);
+title('Rest1');
+subplot(4,1,2);
+plot(Rest.FFT_C2_sum);
+title('Rest2');
+subplot(4,1,3);
+plot(Rest.FFT_C3_sum);
+title('Rest3');
+subplot(4,1,4);
+plot(Rest.FFT_C4_sum);
+title('Rest4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(kickIn.FFT_C1_sum);
+title('kickInC1');
+subplot(4,1,2);
+plot(kickIn.FFT_C2_sum);
+title('kickInC2');
+subplot(4,1,3);
+plot(kickIn.FFT_C3_sum);
+title('kickInC3');
+subplot(4,1,4);
+plot(kickIn.FFT_C4_sum);
+title('kickInC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(kickOut.FFT_C1_sum);
+title('kickOutC1');
+subplot(4,1,2);
+plot(kickOut.FFT_C2_sum);
+title('kickOutC2');
+subplot(4,1,3);
+plot(kickOut.FFT_C3_sum);
+title('kickOutC3');
+subplot(4,1,4);
+plot(kickOut.FFT_C4_sum);
+title('kickOutC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(Plantarflexion.FFT_C1_sum);
+title('PlantarflexionC1');
+subplot(4,1,2);
+plot(Plantarflexion.FFT_C1_sum);
+title('PlantarflexionC2');
+subplot(4,1,3);
+plot(Plantarflexion.FFT_C1_sum);
+title('PlantarflexionC3');
+subplot(4,1,4);
+plot(Plantarflexion.FFT_C1_sum);
+title('PlantarflexionC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(Dorsiflexion.FFT_C1_sum);
+title('DorsiflexionC1');
+subplot(4,1,2);
+plot(Dorsiflexion.FFT_C2_sum);
+title('DorsiflexionC2');
+subplot(4,1,3);
+plot(Dorsiflexion.FFT_C3_sum);
+title('DorsiflexionC3');
+subplot(4,1,4);
+plot(Dorsiflexion.FFT_C4_sum);
+title('DorsiflexionC4');
+
+%% Plot MNFs
+
+%%plot sums
+figure(figureNum); figureNum = figureNum+1;
+hold all
+subplot(4,1,1);
+plot(Rest.FFT_C1_MNF);
+title('Rest1');
+subplot(4,1,2);
+plot(Rest.FFT_C2_MNF);
+title('Rest2');
+subplot(4,1,3);
+plot(Rest.FFT_C3_MNF);
+title('Rest3');
+subplot(4,1,4);
+plot(Rest.FFT_C4_MNF);
+title('Rest4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(kickIn.FFT_C1_MNF);
+title('kickInC1');
+subplot(4,1,2);
+plot(kickIn.FFT_C2_MNF);
+title('kickInC2');
+subplot(4,1,3);
+plot(kickIn.FFT_C3_MNF);
+title('kickInC3');
+subplot(4,1,4);
+plot(kickIn.FFT_C4_MNF);
+title('kickInC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(kickOut.FFT_C1_MNF);
+title('kickOutC1');
+subplot(4,1,2);
+plot(kickOut.FFT_C2_MNF);
+title('kickOutC2');
+subplot(4,1,3);
+plot(kickOut.FFT_C3_MNF);
+title('kickOutC3');
+subplot(4,1,4);
+plot(kickOut.FFT_C4_MNF);
+title('kickOutC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(Plantarflexion.FFT_C1_MNF);
+title('PlantarflexionC1');
+subplot(4,1,2);
+plot(Plantarflexion.FFT_C1_MNF);
+title('PlantarflexionC2');
+subplot(4,1,3);
+plot(Plantarflexion.FFT_C1_MNF);
+title('PlantarflexionC3');
+subplot(4,1,4);
+plot(Plantarflexion.FFT_C1_MNF);
+title('PlantarflexionC4');
+
+figure(figureNum); figureNum = figureNum+1;
+subplot(4,1,1);
+plot(Dorsiflexion.FFT_C1_MNF);
+title('DorsiflexionC1');
+subplot(4,1,2);
+plot(Dorsiflexion.FFT_C2_MNF);
+title('DorsiflexionC2');
+subplot(4,1,3);
+plot(Dorsiflexion.FFT_C3_MNF);
+title('DorsiflexionC3');
+subplot(4,1,4);
+plot(Dorsiflexion.FFT_C4_MNF);
 title('DorsiflexionC4');
 
 end
