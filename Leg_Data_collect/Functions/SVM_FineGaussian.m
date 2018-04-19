@@ -2,7 +2,7 @@ function [TotalAccuracy] = ...
     SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses)
 %UNTITLED2 Summary of this function goes here
 %Find Maximums
-numTrainSamples = 50;
+numTrainSamples = 100;
 numTestData = numSamples-numTrainSamples;
 
 kickOut.C1_Max = max(kickOut.C1);
@@ -102,7 +102,11 @@ for i=1:length(Testing_Max(:,1))
 end
 
 C = confusionmat(known,prediction')
-Cpercent = (C/((numSamples-numTrainSamples)/numClasses))*100
+for i=1:numClasses
+    Cpercent(i,:) = (C(i,:)/sum(C(i,:)))*100;
+end
+
+Cpercent
 
 TotalAccuracy = 0;
 for i=1:numClasses

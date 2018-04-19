@@ -5,7 +5,7 @@ close all;
 set(0, 'DefaultFigureWindowStyle','docked');
 
 %global variabls:
-numSamples = 100;
+numSamples = 200;
 numClasses = 5;
 figureNum = 1;
 %[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
@@ -24,8 +24,8 @@ load('AutoLegData.mat');
 % 
 % %% Calculate FFT's
 % 
-[kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
-     CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum);
+% [kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest,figureNum] = ...
+%      CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum);
 % 
 % %% Power Spectral Density
 % 
