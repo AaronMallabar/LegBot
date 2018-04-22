@@ -109,6 +109,8 @@ Testing_Max = AllData_random(numTrainSamples+1:end, 1:col);
 % known(4*Interval+1:5*Interval,1) = 5;
 known = AllData_random(numTrainSamples+1:end, col + 1);
 
+
+%Change function call (4, 8, 12, 16) based on number of features being used
 [trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer8(Training_Max);
 for i=1:length(Testing_Max(:,1))
      Test = Testing_Max(i,1:col);
