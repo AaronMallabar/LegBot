@@ -64,6 +64,12 @@ for i = 1:40
     
 end
 
+Rest.FFT_sum = [Rest.FFT_C1_sum', Rest.FFT_C2_sum', Rest.FFT_C3_sum', Rest.FFT_C4_sum'];
+kickIn.FFT_sum = [kickIn.FFT_C1_sum', kickIn.FFT_C2_sum', kickIn.FFT_C3_sum', kickIn.FFT_C4_sum'];
+kickOut.FFT_sum = [kickOut.FFT_C1_sum', kickOut.FFT_C2_sum', kickOut.FFT_C3_sum', kickOut.FFT_C4_sum'];
+Plantarflexion.FFT_sum = [Plantarflexion.FFT_C1_sum', Plantarflexion.FFT_C2_sum', Plantarflexion.FFT_C3_sum', Plantarflexion.FFT_C4_sum'];
+Dorsiflexion.FFT_sum = [Dorsiflexion.FFT_C1_sum', Dorsiflexion.FFT_C2_sum', Dorsiflexion.FFT_C3_sum', Dorsiflexion.FFT_C4_sum'];
+
 %% get mean frequency (MNF)
 
 for i = 1:40
@@ -92,6 +98,12 @@ for i = 1:40
     Dorsiflexion.FFT_C3_MNF(i) = sum(Dorsiflexion.FFT_C3(:,i).*f(:))./sum(Dorsiflexion.FFT_C3(:,i));
     Dorsiflexion.FFT_C4_MNF(i) = sum(Dorsiflexion.FFT_C4(:,i).*f(:))./sum(Dorsiflexion.FFT_C4(:,i));
 end
+
+Rest.FFT_MNF = [Rest.FFT_C1_MNF', Rest.FFT_C2_MNF', Rest.FFT_C3_MNF', Rest.FFT_C4_MNF'];
+kickIn.FFT_MNF = [kickIn.FFT_C1_MNF', kickIn.FFT_C2_MNF', kickIn.FFT_C3_MNF', kickIn.FFT_C4_MNF'];
+kickOut.FFT_MNF = [kickOut.FFT_C1_MNF', kickOut.FFT_C2_MNF', kickOut.FFT_C3_MNF', kickOut.FFT_C4_MNF'];
+Plantarflexion.FFT_MNF = [Plantarflexion.FFT_C1_MNF', Plantarflexion.FFT_C2_MNF', Plantarflexion.FFT_C3_MNF', Plantarflexion.FFT_C4_MNF'];
+Dorsiflexion.FFT_MNF = [Dorsiflexion.FFT_C1_MNF', Dorsiflexion.FFT_C2_MNF', Dorsiflexion.FFT_C3_MNF', Dorsiflexion.FFT_C4_MNF'];
 
 %% plot FFTs
 
@@ -260,7 +272,7 @@ title('DorsiflexionC4');
 
 %% Plot MNFs
 
-%%plot sums
+%%plot MNFs
 figure(figureNum); figureNum = figureNum+1;
 hold all
 subplot(4,1,1);
