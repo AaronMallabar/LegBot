@@ -1,4 +1,4 @@
-function[kickOut kickIn Dorsiflexion Plantarflexion Rest]  = readData( )
+function[kickOut kickIn Dorsiflexion Plantarflexion Rest ICA]  = readData( )
 %% Read Data to Arrays
 clear;
 close all;
@@ -836,7 +836,7 @@ Rest4(:,40) = csvread('A_Relax_40_418.csv' ,0,3,[0 3 9999 3]);
 %% Put Data into arrays%
 init1 = zeros(10000,20);  init3 = zeros(1251,1);
 init4 = zeros(5001,1); init5 = zeros(2502,1); init6 = zeros(1252,1);
-init7 = zeros(1, 40);
+init7 = zeros(1, 40); init8 = zeros(200, 40);
 kickOut = struct('C1',kickOutC1, 'C2',kickOutC2,'C3',kickOutC3, 'C4',kickOutC4 ...
                   ,'WaveletCoeffC1L1', init4, 'WaveletCoeffC1L2', init5, 'WaveletCoeffC1L3', init6 ...
                   ,'WaveletCoeffC2L1', init4, 'WaveletCoeffC2L2', init5, 'WaveletCoeffC2L3', init6 ...
@@ -877,8 +877,8 @@ Rest = struct('C1',Rest1, 'C2',Rest2,'C3',Rest3, 'C4',Rest4 ...
                   ,'FFT_C1', init1, 'FFT_C2', init1, 'FFT_C3', init1, 'FFT_C4', init1...
                   ,'FFT_C1_sum', init7, 'FFT_C2_sum', init7, 'FFT_C3_sum', init7, 'FFT_C4_sum', init7...
                   ,'FFT_C1_MNF', init7, 'FFT_C2_MNF', init7, 'FFT_C3_MNF', init7, 'FFT_C4_MNF', init7);
-
-save('AutoLegData','kickOut', 'kickIn', 'Dorsiflexion', 'Plantarflexion', 'Rest');
+ICA = struct('C1', init8, 'C2', init8, 'C3', init8, 'C4', init8);
+save('AutoLegData','kickOut', 'kickIn', 'Dorsiflexion', 'Plantarflexion', 'Rest', 'ICA');
 
 end
 
