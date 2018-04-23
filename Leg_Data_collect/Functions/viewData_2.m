@@ -8,10 +8,10 @@ set(0, 'DefaultFigureWindowStyle','docked');
 numSamples = 200;
 numClasses = 5;
 figureNum = 1;
-[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
+%[kickOut kickIn Dorsiflexion Plantarflexion Rest] = readData(); %read and save as .mat then load it in.
 %load('AutoLegData.mat');
-[kickOut kickIn Dorsiflexion Plantarflexion Rest figureNum] = CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, 1);
-%model(5, 1);
+%[kickOut kickIn Dorsiflexion Plantarflexion Rest figureNum] = CalculateFFT(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, 1);
+model(3, 1);
 
 
 %% Plotting Raw Data
@@ -38,5 +38,5 @@ figureNum = 1;
 
 %SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
 %Accuracy = SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
-[ICA_model_weights] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses);
+%[ICA_model_weights] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses);
 %SVM3();
