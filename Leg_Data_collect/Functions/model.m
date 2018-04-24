@@ -1,4 +1,4 @@
-function [] = model( action, figureNumber )
+function [startPoints] = model( action, figureNumber, startPoints )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 figure(figureNumber + 1)
@@ -21,17 +21,28 @@ elseif action == 5
     endPoints = Rest;  
 end
 
-startPoints = [10 0; 6 1; 2 0; 2 1.75];
+switch nargin
+    case 2
+        startPoints = [10 0; 6 1; 2 0; 2 1.75];
+    case 1
+        startPoints = [10 0; 6 1; 2 0; 2 1.75];
+    otherwise
+end
+
 change = endPoints - startPoints;
 plot(startPoints(:,2), startPoints(:,1));
 
-for i = 1:10
-    x = startPoints(:,2) + i*change(:,2)./10;
-    y = startPoints(:,1) + i*change(:,1)./10;
-    plot(x, y);drawnow
+steps = 20;
+
+for i = 1:steps
+    x = startPoints(:,2) + i*change(:,2)./steps;
+    y = startPoints(:,1) + i*change(:,1)./steps;
+    plot(x, y);%drawnow
     axis([-10 10 -10 10]);
-    pause(.5);
+    pause(.1);
 end
+
+startPoints = endPoints;
 
 %legend('Rest', 'kickOut', 'kickIn', 'plantar', 'dorsi');
 end
