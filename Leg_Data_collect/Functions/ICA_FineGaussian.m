@@ -1,4 +1,4 @@
-function [AllWeights] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses)
+function [AllWeights, validationAccuracy] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses)
 
 %Find frequency matrices 
 
@@ -8,10 +8,11 @@ ICA_C3 = [kickOut.FFT_C3, kickIn.FFT_C3, Dorsiflexion.FFT_C3, Plantarflexion.FFT
 ICA_C4 = [kickOut.FFT_C4, kickIn.FFT_C4, Dorsiflexion.FFT_C4, Plantarflexion.FFT_C4, Rest.FFT_C4];
 
 %Change function call (4, 8, 12, 16) based on number of features being used
-ICA_mdl_C1 = rica(ICA_C1, 40); %% 40 is number of features we want
-ICA_mdl_C2 = rica(ICA_C2, 40); %% 40 is number of features we want
-ICA_mdl_C3 = rica(ICA_C3, 40); %% 40 is number of features we want
-ICA_mdl_C4 = rica(ICA_C4, 40); %% 40 is number of features we want
+numWeights = 10;
+ICA_mdl_C1 = rica(ICA_C1, numWeights); %% 40 is number of features we want
+ICA_mdl_C2 = rica(ICA_C2, numWeights); %% 40 is number of features we want
+ICA_mdl_C3 = rica(ICA_C3, numWeights); %% 40 is number of features we want
+ICA_mdl_C4 = rica(ICA_C4, numWeights); %% 40 is number of features we want
 
 Weights1 = ICA_mdl_C1.TransformWeights;
 Weights2 = ICA_mdl_C2.TransformWeights;
@@ -34,9 +35,10 @@ for i=1:numSamples
     end       
 end    
 
-AllWeights(:,161) = All_labelnum;
+AllWeights(:,4*numWeights + 1) = All_labelnum;
 
-%[trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer4(AllWeights);
+[trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer40(AllWeights);
+%[trainedClassifier, validationAccuracy] = LinearGaussianSVMtrainer40(AllWeights);
 
 end
 
