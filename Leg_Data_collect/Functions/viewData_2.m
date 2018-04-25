@@ -37,6 +37,7 @@ load('AutoLegData.mat');
 %% SVM
 
 %SVM(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
-%Accuracy = SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses);
-[ICA_model_weights, validationAccuracy] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses);
+
+[ICA_model_weights, ICAvalidationAccuracy] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses);
+Accuracy = SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, ICA_model_weights, figureNum, numSamples, numClasses);
 %SVM3();

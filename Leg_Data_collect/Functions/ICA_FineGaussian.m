@@ -1,4 +1,4 @@
-function [AllWeights, validationAccuracy] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses)
+function [AllWeights, ICAvalidationAccuracy] = ICA_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, numSamples, numClasses)
 
 %Find frequency matrices 
 
@@ -37,8 +37,10 @@ end
 
 AllWeights(:,4*numWeights + 1) = All_labelnum;
 
-[trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer40(AllWeights);
+[trainedClassifier, ICAvalidationAccuracy] = CubicGaussianSVMtrainer40(AllWeights);
 %[trainedClassifier, validationAccuracy] = LinearGaussianSVMtrainer40(AllWeights);
+
+ICAvalidationAccuracy
 
 end
 
