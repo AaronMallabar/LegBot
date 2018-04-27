@@ -1,5 +1,5 @@
 function [TotalAccuracy] = ...
-    SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, ICA_model_weights, figureNum, numSamples, numClasses)
+    SVM_FineGaussian(kickOut, kickIn, Dorsiflexion, Plantarflexion, Rest, figureNum, numSamples, numClasses, ICA_model_weights)
 %UNTITLED2 Summary of this function goes here
 %Find Maximums
 numTrainSamples = 100;
@@ -38,11 +38,11 @@ Dorsiflexion.Max    = [Dorsiflexion.C1_Max',Dorsiflexion.C2_Max', Dorsiflexion.C
 Plantarflexion.Max  = [Plantarflexion.C1_Max',Plantarflexion.C2_Max', Plantarflexion.C3_Max', Plantarflexion.C4_Max'];
 Rest.Max            = [Rest.C1_Max',Rest.C2_Max', Rest.C3_Max', Rest.C4_Max'];
 
-% kickOut.AllFeatures = [kickOut.Max, kickOut.FFT_sum, kickOut.FFT_MNF];
-% kickIn.AllFeatures = [kickIn.Max, kickIn.FFT_sum, kickIn.FFT_MNF];
-% Dorsiflexion.AllFeatures = [Dorsiflexion.Max, Dorsiflexion.FFT_sum, Dorsiflexion.FFT_MNF];
-% Plantarflexion.AllFeatures = [Plantarflexion.Max, Plantarflexion.FFT_sum, Plantarflexion.FFT_MNF];
-% Rest.AllFeatures = [Rest.Max, Rest.FFT_sum, Rest.FFT_MNF];
+kickOut.AllFeatures = [kickOut.Max, kickOut.FFT_sum, kickOut.FFT_MNF];
+kickIn.AllFeatures = [kickIn.Max, kickIn.FFT_sum, kickIn.FFT_MNF];
+Dorsiflexion.AllFeatures = [Dorsiflexion.Max, Dorsiflexion.FFT_sum, Dorsiflexion.FFT_MNF];
+Plantarflexion.AllFeatures = [Plantarflexion.Max, Plantarflexion.FFT_sum, Plantarflexion.FFT_MNF];
+Rest.AllFeatures = [Rest.Max, Rest.FFT_sum, Rest.FFT_MNF];
 
 % kickOut.AllFeatures = [kickOut.FFT_sum, kickOut.FFT_MNF];
 % kickIn.AllFeatures = [kickIn.FFT_sum, kickIn.FFT_MNF];
@@ -50,17 +50,17 @@ Rest.Max            = [Rest.C1_Max',Rest.C2_Max', Rest.C3_Max', Rest.C4_Max'];
 % Plantarflexion.AllFeatures = [Plantarflexion.FFT_sum, Plantarflexion.FFT_MNF];
 % Rest.AllFeatures = [Rest.FFT_sum, Rest.FFT_MNF];
 
-kickOut.AllFeatures = [kickOut.Max];
-kickIn.AllFeatures = [kickIn.Max];
-Dorsiflexion.AllFeatures = [Dorsiflexion.Max];
-Plantarflexion.AllFeatures = [Plantarflexion.Max];
-Rest.AllFeatures = [Rest.Max];
+% kickOut.AllFeatures = [kickOut.Max];
+% kickIn.AllFeatures = [kickIn.Max];
+% Dorsiflexion.AllFeatures = [Dorsiflexion.Max];
+% Plantarflexion.AllFeatures = [Plantarflexion.Max];
+% Rest.AllFeatures = [Rest.Max];
 
 AllData = [kickOut.AllFeatures; kickIn.AllFeatures; Dorsiflexion.AllFeatures;...
     Plantarflexion.AllFeatures; Rest.AllFeatures];
-[row col] = size(AllData);
+ %[row col] = size(AllData);
 AllData = [AllData ICA_model_weights(:,1:40)];
-[row col] = size(AllData);
+ [row col] = size(AllData);
 
 for i=1:numSamples
     if i <= numSamples/numClasses
@@ -119,7 +119,8 @@ known = AllData_random(numTrainSamples+1:end, col + 1);
 
 
 %Change function call (4, 8, 12, 16) based on number of features being used
-[trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer44(Training_Max);
+[trainedClassifier, validationAccuracy] = CubicGaussianSVMtrainer52(Training_Max);
+%save('trainedClassifier52','trainedClassifier');
 for i=1:length(Testing_Max(:,1))
      Test = Testing_Max(i,1:col);
      prediction(i) = trainedClassifier.predictFcn(Test);

@@ -1,8 +1,10 @@
 function [startPoints] = model( action, figureNumber, startPoints )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-figure(figureNumber + 1)
-axis([-10 10 -10 10]);
+figure(figureNumber)
+xlim([-6 6]);
+ylim([0 12]);
+% axis([0 12 -6 6]);
 
 if action == 1
     kickOutPoints = [10 0; 6 1; 2 2; 2.75 3.5];
@@ -38,7 +40,7 @@ for i = 1:steps
     x = startPoints(:,2) + i*change(:,2)./steps;
     y = startPoints(:,1) + i*change(:,1)./steps;
     plot(x, y);%drawnow
-    axis([-10 10 -10 10]);
+    axis([-10 10 0 12]);
     pause(.1);
 end
 
