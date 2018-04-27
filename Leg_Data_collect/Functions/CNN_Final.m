@@ -106,58 +106,184 @@ DATA = cell(200,1);
    
    %% Transpose
 Tran_DATA = cell(200,1);
+TRAIN_DATA = cell(160,1);
+TEST_DATA = cell(40,1);
 
 i = 0;
+L = 0;
 for i = 1:200
     Tran_DATA{i} = DATA_file{i}';
     
+
+    
 end 
+
+
+FILE1 = cell(160,1);
+CATE1 = cell(160,1);
+
+CATE2 = cell(40,1);
+FILE2 = cell(40,1);
+
+for L = 1:200
+
+    for L = 1:32
+        TRAIN_DATA{L} = Tran_DATA{L};
+        FILE1{L} = File_org{L};
+        CATE1{L} = CATname{L};
+    end
+    
+    for L = 33:40
+        TEST_DATA{L-32} = Tran_DATA{L};
+        FILE2{L-32} = File_org{L};
+        CATE2{L-32} = CATname{L};
+    end
+    
+    for L = 41:72
+        TRAIN_DATA{L-8} = Tran_DATA{L};
+                FILE1{L-8} = File_org{L};
+        CATE1{L-8} = CATname{L};
+    end
+    
+    for L = 73:80
+        TEST_DATA{L-64} = Tran_DATA{L};
+                FILE2{L-64} = File_org{L};
+        CATE2{L-64} = CATname{L};
+    end
+    
+    for L = 81:112
+        TRAIN_DATA{L-16} = Tran_DATA{L};
+                FILE1{L-16} = File_org{L};
+        CATE1{L-16} = CATname{L};
+    end
+    
+    for L = 113:120
+        TEST_DATA{L -96} = Tran_DATA{L};
+                FILE2{L-96} = File_org{L};
+        CATE2{L-96} = CATname{L};
+    end
+    
+    for L = 121:152
+         TRAIN_DATA{L-24} = Tran_DATA{L};
+                 FILE1{L-24} = File_org{L};
+        CATE1{L-24} = CATname{L};
+    end
+    
+    for L = 153:160
+         TEST_DATA{L-128} = Tran_DATA{L};
+                 FILE2{L-128} = File_org{L};
+        CATE2{L-128} = CATname{L};
+    end
+    
+    for L = 161:192
+        TRAIN_DATA{L-32} = Tran_DATA{L};
+                FILE1{L-32} = File_org{L};
+        CATE1{L-32} = CATname{L};
+    end
+    
+    for L = 193:200
+         TEST_DATA{L-160} = Tran_DATA{L};
+                 FILE2{L-160} = File_org{L};
+        CATE2{L-160} = CATname{L};
+    end
+end
+
+    
+
 
 
 %% Create 20,000 samples from random of 200
 
 
-SAMPLE = 1000;
 
+
+
+SAMPLE = 5000*0.7;   
+SAMPLE2 = 5000*0.3;
 file = cell(SAMPLE,1);
+file_1 = cell(SAMPLE2,1);
 Signal = cell(SAMPLE,1);
+Signal_1 = cell(SAMPLE2,1);
 label = cell(SAMPLE,1);
+label_1 = cell(SAMPLE2,1);
 
  A1 = 0;
  B1 = 0;
  C1 = 0;
  D1 = 0;
  E1 = 0;
+ A1_1 = 0;
+ B1_1 = 0;
+ C1_1 = 0;
+ D1_1 = 0;
+ E1_1 = 0;
  
 for RUN =1:SAMPLE
-    a = randi(200,1);
-    file{RUN} = File_org{a};        % File_org is the file name number
-    Signal{RUN} = Tran_DATA{a};            % Tran_DATA is the signal
-    label{RUN} = CATname{a};                %  CATname is the label
+    a = randi(160,1);
+    file{RUN} = FILE1{a};        % File_org is the file name number
+    Signal{RUN} = TRAIN_DATA{a};            % Tran_DATA is the signal
+    label{RUN} = CATE1{a};                %  CATname is the label 
     
     
-    if (1 <= a) && (a <= 40)
+    if (1 <= a) && (a <= 32)
+              
         A1 = A1+1;
         
     end
        
-    if (41 <= a) && (a <= 80)
+    if (33 <= a) && (a <= 64)
         B1 = B1+1;
         
     end
         
-    if (81 <= a) && (a <= 120)
+    if (65 <= a) && (a <=96 )
         C1 = C1+1;
         
     end
         
-    if (121 <= a) && (a <= 160)
+    if (97 <= a) && (a <= 128)
         D1 = D1+1;
         
     end
         
-    if (161 <= a) && (a <= 200)
+    if (129 <= a) && (a <= 160)
         E1 = E1+1;
+        
+    end
+    
+end 
+
+
+for RUN =1:SAMPLE2
+    a = randi(40,1);
+    file_1{RUN} = FILE2{a};        % File_org is the file name number
+    Signal_1{RUN} = TEST_DATA{a};            % Tran_DATA is the signal
+    label_1{RUN} = CATE2{a};                %  CATname is the label 
+    
+    
+    if (1 <= a) && (a <= 8)
+              
+        A1_1 = A1_1+1;
+        
+    end
+       
+    if (9 <= a) && (a <= 16)
+        B1_1 = B1_1+1;
+        
+    end
+        
+    if (17 <= a) && (a <=24 )
+        C1_1 = C1_1+1;
+        
+    end
+        
+    if (25 <= a) && (a <= 32)
+        D1_1 = D1_1+1;
+        
+    end
+        
+    if (33 <= a) && (a <= 40)
+        E1_1 = E1_1+1;
         
     end
     
@@ -166,8 +292,14 @@ end
 Filename = categorical(file);
 Label = categorical(label);
 
+Filename1 = categorical(file_1);
+Label1 = categorical(label_1);
+
   DATA_CNN = table(Filename,Label,Signal); % works for creating 100 rows
   DATA_CNN.Properties.VariableNames={'FileName','Label','Signal'}; 
+  
+    DATA_CNN = table(Filename1,Label1,Signal_1); % works for creating 100 rows
+  DATA_CNN.Properties.VariableNames={'FileName1','Label_1','Signal_1'}; 
  
  LL = cellfun(@length,Signal);
 
@@ -191,12 +323,34 @@ Label = categorical(label);
  
  RelaxA = Signal(Label == 'Relax');
  RelaxB = Label(Label == 'Relax');
+  
+ KickOutA1 = Signal_1(Label1 == 'Kick Out');
+ KickOutB1 = Label1(Label1 == 'Kick Out');
  
-[trainIndKickOut,~,testIndKickOut] = dividerand(B1,0.8,0.0,0.2);
-[trainIndKickIn,~,testIndKickIn] = dividerand(C1,0.8,0.0,0.2);
-[trainIndDors,~,testIndDors] = dividerand(A1,0.8,0.0,0.2);
-[trainIndPlant,~,testIndPlant] = dividerand(D1,0.8,0.0,0.2);
-[trainIndRelax,~,testIndRelax] = dividerand(E1,0.8,0.0,0.2);
+ KickInA1 = Signal_1(Label1 == 'Kick In');
+ KickInB1 = Label1(Label1  == 'Kick In');
+ 
+ DorsA1 = Signal_1(Label1 == 'Dorsiflexion');
+ DorsB1 = Label1(Label1 == 'Dorsiflexion');
+ 
+ PlantA1 = Signal_1(Label1 == 'Plantarflexion');
+ PlantB1 = Label1(Label1 == 'Plantarflexion');
+ 
+ RelaxA1 = Signal_1(Label1 == 'Relax');
+ RelaxB1 = Label1(Label1 == 'Relax');
+ 
+[trainIndKickOut,~,testIndKickOut] = dividerand(B1,1,0.0,0.0);
+[trainIndKickIn,~,testIndKickIn] = dividerand(C1,1,0.0,0.0);
+[trainIndDors,~,testIndDors] = dividerand(A1,1,0.0,0.0);
+[trainIndPlant,~,testIndPlant] = dividerand(D1,1,0.0,0.0);
+[trainIndRelax,~,testIndRelax] = dividerand(E1,1,0.0,0.0);
+
+
+[trainIndKickOut1,~,testIndKickOut1] = dividerand(B1_1,1.0,0.0,0.0);
+[trainIndKickIn1,~,testIndKickIn1] = dividerand(C1_1,1.0,0.0,0.0);
+[trainIndDors1,~,testIndDors1] = dividerand(A1_1,1.0,0.0,0.0);
+[trainIndPlant1,~,testIndPlant1] = dividerand(D1_1,1.0,0.0,0.0);
+[trainIndRelax1,~,testIndRelax1] = dividerand(E1_1,1.0,0.0,0.0);
  
 %% TRAIN DATA BELOW
 
@@ -217,20 +371,20 @@ BTrainRelax =  RelaxB(trainIndRelax);
 
 % TEST DATA BELOW
 
-ATestKickOut = KickOutA(testIndKickOut);
-BTestKickOut = KickOutB(testIndKickOut);
+ATestKickOut = KickOutA1(trainIndKickOut1);
+BTestKickOut = KickOutB1(trainIndKickOut1);
 
-ATestKickIn =  KickInA(testIndKickIn);
-BTestKickIn =  KickInB(testIndKickIn);
+ATestKickIn =  KickInA1(trainIndKickIn1);
+BTestKickIn =  KickInB1(trainIndKickIn1);
 
-ATestDors =  DorsA(testIndDors);
-BTestDors =  DorsB(testIndDors);
+ATestDors =  DorsA1(trainIndDors1);
+BTestDors =  DorsB1(trainIndDors1);
 
-ATestPlant =  PlantA(testIndPlant);
-BTestPlant =  PlantB(testIndPlant);
+ATestPlant =  PlantA1(trainIndPlant1);
+BTestPlant =  PlantB1(trainIndPlant1);
 
-ATestRelax =  RelaxA(testIndRelax);
-BTestRelax =  RelaxB(testIndRelax);
+ATestRelax =  RelaxA1(trainIndRelax1);
+BTestRelax =  RelaxB1(trainIndRelax1);
 
 % XTRAIN AND YTRAIN data SETS
 
@@ -246,10 +400,10 @@ XTrain = [ATrainKickOut(1:length(trainIndKickOut));ATrainKickIn(1:length(trainIn
 YTrain = [BTrainKickOut(1:length(trainIndKickOut));BTrainKickIn(1:length(trainIndKickIn)); BTrainDors(1:length(trainIndDors));BTrainPlant(1:length(trainIndPlant));...
     BTrainRelax(1:length(trainIndRelax))];
 
-XTest = [ATestKickOut(1:length(testIndKickOut));ATestKickIn(1:length(testIndKickIn)); ATestDors(1:length(testIndDors));ATestPlant(1:length(testIndPlant));...
-    ATestRelax(1:length(testIndRelax))];
-YTest = [BTestKickOut(1:length(testIndKickOut));BTestKickIn(1:length(testIndKickIn)); BTestDors(1:length(testIndDors));BTestPlant(1:length(testIndPlant));...
-    BTestRelax(1:length(testIndRelax))];
+XTest = [ATestKickOut(1:length(trainIndKickOut1));ATestKickIn(1:length(trainIndKickIn1)); ATestDors(1:length(trainIndDors1));ATestPlant(1:length(trainIndPlant1));...
+    ATestRelax(1:length(trainIndRelax1))];
+YTest = [BTestKickOut(1:length(trainIndKickOut1));BTestKickIn(1:length(trainIndKickIn1)); BTestDors(1:length(trainIndDors1));BTestPlant(1:length(trainIndPlant1));...
+    BTestRelax(1:length(trainIndRelax1))];
 % Layers
 
 % layers = [ ...
@@ -320,7 +474,7 @@ layers = [ ...
 
 
 options = trainingOptions('adam', ...
-    'MaxEpochs',30, ...
+    'MaxEpochs',100, ...
     'MiniBatchSize', 150, ...
     'InitialLearnRate', 0.01, ...
     'GradientThreshold', 1, ...
