@@ -1,5 +1,5 @@
 
-
+%% Reading the structure of data for each different class and channel
 
 
 Dors_file =     struct2cell(Dorsiflexion);
@@ -8,6 +8,7 @@ KickIn_file =   struct2cell(kickIn);
 Plantar_file =  struct2cell(Plantarflexion);
 Relax_file =     struct2cell(Rest);
 
+%% Storing the data, variable and filename per each c
 
 
 File_org = cell(200,1);             % storing file names
@@ -118,6 +119,7 @@ for i = 1:200
     
 end 
 
+%% Store filenames and variable names
 
 FILE1 = cell(160,1);
 CATE1 = cell(160,1);
@@ -192,14 +194,16 @@ end
 
 
 
-%% Create 20,000 samples from random of 200
+%% Create 5,000 samples
+
+% then randomize the data for Training set
 
 
 
+NUM = 5000;
 
-
-SAMPLE = 5000*0.7;   
-SAMPLE2 = 5000*0.3;
+SAMPLE = NUM*0.7;   
+SAMPLE2 = NUM*0.3;
 file = cell(SAMPLE,1);
 file_1 = cell(SAMPLE2,1);
 Signal = cell(SAMPLE,1);
@@ -253,6 +257,7 @@ for RUN =1:SAMPLE
     
 end 
 
+%% Randomize testing samples and store them to new cells
 
 for RUN =1:SAMPLE2
     a = randi(40,1);
@@ -289,26 +294,24 @@ for RUN =1:SAMPLE2
     
 end 
 
+
+%% Categoricalize the Data for the CNN to read
+
 Filename = categorical(file);
 Label = categorical(label);
 
 Filename1 = categorical(file_1);
 Label1 = categorical(label_1);
 
+
+%% Creating Table's to help store data
   DATA_CNN = table(Filename,Label,Signal); % works for creating 100 rows
   DATA_CNN.Properties.VariableNames={'FileName','Label','Signal'}; 
   
-    DATA_CNN = table(Filename1,Label1,Signal_1); % works for creating 100 rows
-  DATA_CNN.Properties.VariableNames={'FileName1','Label_1','Signal_1'}; 
- 
- LL = cellfun(@length,Signal);
+    DATA_CNN1 = table(Filename1,Label1,Signal_1); % works for creating 100 rows
+  DATA_CNN1.Properties.VariableNames={'FileName1','Label_1','Signal_1'}; 
 
- 
- 
- 
- 
- 
- 
+%% Organizing Data 
  KickOutA = Signal(Label == 'Kick Out');
  KickOutB = Label(Label == 'Kick Out');
  
@@ -338,6 +341,8 @@ Label1 = categorical(label_1);
  
  RelaxA1 = Signal_1(Label1 == 'Relax');
  RelaxB1 = Label1(Label1 == 'Relax');
+ 
+ 
  
 [trainIndKickOut,~,testIndKickOut] = dividerand(B1,1,0.0,0.0);
 [trainIndKickIn,~,testIndKickIn] = dividerand(C1,1,0.0,0.0);
@@ -369,7 +374,7 @@ BTrainPlant =  PlantB(trainIndPlant);
 ATrainRelax =  RelaxA(trainIndRelax);
 BTrainRelax =  RelaxB(trainIndRelax);
 
-% TEST DATA BELOW
+%% TEST DATA BELOW
 
 ATestKickOut = KickOutA1(trainIndKickOut1);
 BTestKickOut = KickOutB1(trainIndKickOut1);
@@ -386,13 +391,7 @@ BTestPlant =  PlantB1(trainIndPlant1);
 ATestRelax =  RelaxA1(trainIndRelax1);
 BTestRelax =  RelaxB1(trainIndRelax1);
 
-% XTRAIN AND YTRAIN data SETS
-
-% A2 = floor(A1*0.9);
-% B2 = floor(B1*0.9);
-% C2 = floor(C1*0.9);
-% D2 = floor(D1*0.9);
-% E2 = floor(E1*0.9);
+%% Training Data and Testing Data storing
 
 XTrain = [ATrainKickOut(1:length(trainIndKickOut));ATrainKickIn(1:length(trainIndKickIn)); ATrainDors(1:length(trainIndDors));ATrainPlant(1:length(trainIndPlant));...
     ATrainRelax(1:length(trainIndRelax))];
@@ -404,25 +403,25 @@ XTest = [ATestKickOut(1:length(trainIndKickOut1));ATestKickIn(1:length(trainIndK
     ATestRelax(1:length(trainIndRelax1))];
 YTest = [BTestKickOut(1:length(trainIndKickOut1));BTestKickIn(1:length(trainIndKickIn1)); BTestDors(1:length(trainIndDors1));BTestPlant(1:length(trainIndPlant1));...
     BTestRelax(1:length(trainIndRelax1))];
-% Layers
+%%  Layers
 
 % layers = [ ...
 %     sequenceInputLayer(4)
-%     bilstmLayer(150,'OutputMode','last')
+%     bilstmLayer(100,'OutputMode','last')
 %     fullyConnectedLayer(5)
 %     softmaxLayer
 %     classificationLayer
 %     ];
 % 
 % options = trainingOptions('sgdm', ... % Adam perfroms better RNN
-%     'MaxEpochs',5, ...            % passes through the data
-%     'MiniBatchSize', 50, ...     % how many training signals to look at, at a time
-%     'InitialLearnRate', 0.001, ... % speeds up training process
+%     'MaxEpochs',7, ...            % passes through the data
+%     'MiniBatchSize', 150, ...     % how many training signals to look at, at a time
+%     'InitialLearnRate', 0.01, ... % speeds up training process
 %     'SequenceLength', 100, ...   % breaks signal into 1000 pieces frees up memory
 %     'GradientThreshold', 1, ...   % stabalize training process
 %     'plots','training-progress', ... % generates the plots
 %     'Verbose',false);             % table corresponds to the data  
-
+% 
 % net = trainNetwork(XTrain,YTrain,layers,options);
 % 
 % figure(1)
@@ -433,35 +432,31 @@ YTest = [BTestKickOut(1:length(trainIndKickOut1));BTestKickIn(1:length(trainIndK
 % testPred = classify(net,XTest,'SequenceLength',1400);
 % plotconfusion(YTest',testPred','Testing Accuracy');
 
-fs = 300;
+%% Feature Extraction
 
-instfreqTrain = cellfun(@(x)instfreq(x(1,:),fs)',XTrain,'UniformOutput',false);
-instfreqTest = cellfun(@(x)instfreq(x(1,:),fs)',XTest,'UniformOutput',false);
 
-pentropyTrain = cellfun(@(x)pentropy(x(1,:),fs)',XTrain,'UniformOutput',false);
-pentropyTest = cellfun(@(x)pentropy(x(1,:),fs)',XTest,'UniformOutput',false);
+Freq = 300;
 
-% instfreqTrain = cellfun(@(x)instfreq(x,fs)',XTrain,'UniformOutput',false);
-% instfreqTest = cellfun(@(x)instfreq(x,fs)',XTest,'UniformOutput',false);
-% 
-% pentropyTrain = cellfun(@(x)pentropy(x,fs)',XTrain,'UniformOutput',false);
-% pentropyTest = cellfun(@(x)pentropy(x,fs)',XTest,'UniformOutput',false);
+instfreqTrain = cellfun(@(x)instfreq(x(1,:),Freq)',XTrain,'UniformOutput',false);
+instfreqTest = cellfun(@(x)instfreq(x(1,:),Freq)',XTest,'UniformOutput',false);
 
+pentropyTrain = cellfun(@(x)pentropy(x(1,:),Freq)',XTrain,'UniformOutput',false);
+pentropyTest = cellfun(@(x)pentropy(x(1,:),Freq)',XTest,'UniformOutput',false);
 
 XTrain2 = cellfun(@(x,y)[x;y],instfreqTrain,pentropyTrain,'UniformOutput',false);
 XTest2 = cellfun(@(x,y)[x;y],instfreqTest,pentropyTest,'UniformOutput',false);
 
 
-XV = [XTrain2{:}];
-mu = mean(XV,2);
-sg = std(XV,[],2);
+XTOT = [XTrain2{:}];
+MEAN = mean(XTOT,2);
+SIGMA = std(XTOT,[],2);
 
 
 XTrainSD = XTrain2;
-XTrainSD = cellfun(@(x)(x-mu)./sg,XTrainSD,'UniformOutput',false);
+XTrainSD = cellfun(@(x)(x-MEAN)./SIGMA,XTrainSD,'UniformOutput',false);
 
 XTestSD = XTest2;
-XTestSD = cellfun(@(x)(x-mu)./sg,XTestSD,'UniformOutput',false);
+XTestSD = cellfun(@(x)(x-MEAN)./SIGMA,XTestSD,'UniformOutput',false);
 
 
 layers = [ ...
@@ -474,7 +469,7 @@ layers = [ ...
 
 
 options = trainingOptions('adam', ...
-    'MaxEpochs',100, ...
+    'MaxEpochs',7, ...
     'MiniBatchSize', 150, ...
     'InitialLearnRate', 0.01, ...
     'GradientThreshold', 1, ...
