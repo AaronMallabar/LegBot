@@ -405,32 +405,32 @@ YTest = [BTestKickOut(1:length(trainIndKickOut1));BTestKickIn(1:length(trainIndK
     BTestRelax(1:length(trainIndRelax1))];
 %%  Layers
 
-% layers = [ ...
-%     sequenceInputLayer(4)
-%     bilstmLayer(100,'OutputMode','last')
-%     fullyConnectedLayer(5)
-%     softmaxLayer
-%     classificationLayer
-%     ];
-% 
-% options = trainingOptions('sgdm', ... % Adam perfroms better RNN
-%     'MaxEpochs',7, ...            % passes through the data
-%     'MiniBatchSize', 150, ...     % how many training signals to look at, at a time
-%     'InitialLearnRate', 0.01, ... % speeds up training process
-%     'SequenceLength', 100, ...   % breaks signal into 1000 pieces frees up memory
-%     'GradientThreshold', 1, ...   % stabalize training process
-%     'plots','training-progress', ... % generates the plots
-%     'Verbose',false);             % table corresponds to the data  
-% 
-% net = trainNetwork(XTrain,YTrain,layers,options);
-% 
-% figure(1)
-% trainPred = classify(net,XTrain,'SequenceLength',1400);
-% plotconfusion(YTrain',trainPred','Training Accuracy');
-% 
-% figure(2)
-% testPred = classify(net,XTest,'SequenceLength',1400);
-% plotconfusion(YTest',testPred','Testing Accuracy');
+layers = [ ...
+    sequenceInputLayer(4)
+    bilstmLayer(100,'OutputMode','last')
+    fullyConnectedLayer(5)
+    softmaxLayer
+    classificationLayer
+    ];
+
+options = trainingOptions('sgdm', ... % Adam perfroms better RNN
+    'MaxEpochs',7, ...            % passes through the data
+    'MiniBatchSize', 150, ...     % how many training signals to look at, at a time
+    'InitialLearnRate', 0.01, ... % speeds up training process
+    'SequenceLength', 100, ...   % breaks signal into 1000 pieces frees up memory
+    'GradientThreshold', 1, ...   % stabalize training process
+    'plots','training-progress', ... % generates the plots
+    'Verbose',false);             % table corresponds to the data  
+
+net = trainNetwork(XTrain,YTrain,layers,options);
+
+figure(1)
+trainPred = classify(net,XTrain,'SequenceLength',1400);
+plotconfusion(YTrain',trainPred','Training Accuracy');
+
+figure(2)
+testPred = classify(net,XTest,'SequenceLength',1400);
+plotconfusion(YTest',testPred','Testing Accuracy');
 
 %% Feature Extraction
 
